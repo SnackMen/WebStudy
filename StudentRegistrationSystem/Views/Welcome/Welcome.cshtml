@@ -1,0 +1,50 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>登录界面</title>
+    <link href="~/Content/css/buttonStyle.css" rel="stylesheet" type="text/css" />
+    <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div id="div1">
+        <div id="divBlack">
+        </div>
+        <div id="select">
+            <div id="div2">
+                @*<form action="/Student/Index" method="post">
+                    <div><input class="form-control" type="text" placeholder="账号" style="width:345px" /></div><br />
+                    <div><input class="form-control" type="password" placeholder="密码" style="width:345px" /></div> <br /> <br />
+                    <input class="btn btn-primary btn-lg" type="submit" value="登 录" style="width:345px;" />
+                </form>*@
+                @using(Html.BeginForm("Index","Student",FormMethod.Post))
+                {
+                    <div><input class="form-control" type="text" placeholder="账号" style="width:345px" name="UserName"/></div><br />
+                    <div><input class="form-control" type="password" placeholder="密码" style="width:345px" name="Password"/></div> <br /> <br />
+                    <input class="btn btn-primary btn-lg" type="submit" value="登 录" style="width:345px;" />
+                }
+            </div>
+            <div class="container">
+                <div id="writer" class="jumbotron">
+                    <marquee direction="up" behavior="scroll" scrolldelay="300" style="width:400px;height:200px;">
+                        <ul class="list">
+                            <li>最新信息</li>
+                            <li>最新信息</li>
+                            <li>最新信息</li>
+                            <li>最新信息</li>
+                            <li>最新信息</li>
+                        </ul>
+                    </marquee>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

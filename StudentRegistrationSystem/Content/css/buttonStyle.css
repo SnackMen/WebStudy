@@ -1,0 +1,44 @@
+﻿body {
+    margin:0;
+    padding:0;
+}
+.btn1 {
+    width: 358px;
+    height: 41px;
+    background: #54ABD4;
+    font-family:"黑体";
+    font-size:18px;
+    color:#ffffff;
+}
+#divBlack{
+    background:black;
+    height:40px;
+    width:100%;
+
+}
+#select{
+    background-image:url(../img/bgimage.jpg);
+    background-size:100% 100%;
+    width:100%;
+    height:590px;
+}
+#div2{
+    top:100px;
+    float:right;
+    position:relative;
+    right:100px;
+
+}
+#writer{
+    position:absolute;
+    top:100px;
+    left:50px;
+    height:270px;
+    width:400px;
+    /*background:#b6ff00;*/
+    opacity:0.5;
+}
+.list li{
+    list-style-type:none;
+    font-size:14px;
+}

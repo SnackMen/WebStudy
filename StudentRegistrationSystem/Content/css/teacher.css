@@ -1,0 +1,14 @@
+﻿body {
+    margin:0px;
+    padding:0;
+}
+#queryTimetable{
+    width:1180px;
+    height:500px;
+    display:none;
+}
+#inputgrade{
+    width:1180px;
+    height:500px;
+    display:none;
+}

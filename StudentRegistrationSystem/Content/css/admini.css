@@ -1,0 +1,22 @@
+﻿body {
+    margin:0px;
+    padding:0;
+}
+#add{
+    width:1180px;
+    height:500px;
+    display:none;
+}
+#expan{
+    width:1180px;
+    height:500px;
+    display:none;
+}
+#div-left{
+    width:300px;
+}
+#div-right{
+    position:absolute;
+    left:350px;
+    top:0;
+}
