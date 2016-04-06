@@ -14,5 +14,7 @@ namespace StudentRegistrationSystem.Models
 		public string TNAME { get; set; }
 		public int SELECTEDNUM { get; set; }
 		public int CAPACITY { get; set; }
+		public string TIME { get; set; }
+		public string WEEK { get; set; }
 	}
 }

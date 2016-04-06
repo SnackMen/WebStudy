@@ -1,0 +1,20 @@
+﻿@using StudentRegistrationSystem.Models;
+@model List<SelectCourse>
+@{
+    Layout = null;
+}
+@{
+    int i = 0;
+}
+@foreach (var u in Model)
+{
+    <tr>
+        <td>@i</td>
+        <td>@u.CNO</td>
+        <td>@u.CNAME</td>
+        <td>@u.CREDIT</td>
+        <td>@u.CDEPT</td>
+        <td>@u.TNAME</td>
+        <td>@u.TIME @u.WEEK</td>
+    </tr>
+}

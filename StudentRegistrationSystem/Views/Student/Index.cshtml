@@ -1,4 +1,5 @@
-﻿
+﻿@using StudentRegistrationSystem.Models;
+@model List<SelectCourse>
 @{
     Layout = null;
 }
@@ -28,11 +29,11 @@
                     <table>
                         <tr>
                             <td width="40px">学号：</td>
-                            <td width="50px">@ViewBag.sno</td>
+                            <td width="50px">@TempData["sno"]</td>
                         </tr>
                         <tr>
                             <td width="40px">姓名：</td>
-                            <td>@ViewBag.name</td>
+                            <td>@TempData["name"]</td>
                         </tr>
                     </table>
                 </div>
@@ -70,22 +71,39 @@
             </div>
             <div class="div-center">
                 <div id="selecourse">
-                    <div id="select-cno-message">
-                        @using (Html.BeginForm("Index", "Student", FormMethod.Get))
+                    <div id="select-cno-message">   
+                        @*@using (Html.BeginForm("ajaxIndex", "Student", FormMethod.Post, new { @class = "selectCourseMessage" }))
                         {
                             <div class="form-group">
                                 <label class="select-cno">课号</label>
-                                @Html.TextBox("cno", "#", new { @class = "form-control", @style = "width:300px;" })
+                                @Html.TextBox("cno", null, new { @class = "form-control", @style = "width:300px;" })
                             </div>
                             <div>
                                 <label class="select-cno">课名</label>
-                                @Html.TextBox("cno", "#", new { @class = "form-control", @style = "width:300px;" }) <br />
+                                @Html.TextBox("cname", null, new { @class = "form-control", @style = "width:300px;" }) <br />
                             </div>
-                            <button type="submit" class="btn btn-default" style="background: #337ab7;color:white;font-weight:bolder">查询</button>
+                            <button id="submit" type="submit" class="btn btn-default" style="background: #337ab7;color:white;font-weight:bolder">查询</button>
+                        }*@
+                        @using (Ajax.BeginForm("TableIndex", "Student", new AjaxOptions
+                        {
+                            HttpMethod = "Post",
+                            UpdateTargetId = "tbClass",
+                            InsertionMode = InsertionMode.InsertAfter
+                        }))
+                        {
+                             <div class="form-group">
+                                <label class="select-cno">课号</label>
+                                @Html.TextBox("cno", null, new { @class = "form-control", @style = "width:300px;" })
+                            </div>
+                            <div>
+                                <label class="select-cno">课名</label>
+                                @Html.TextBox("cname", null, new { @class = "form-control", @style = "width:300px;" }) <br />
+                            </div>
+                            <button id="submit" type="submit" class="btn btn-default" style="background: #337ab7;color:white;font-weight:bolder">查询</button>
                         }
                     </div>
                     <div id="select-cno-result">
-                        <table class="table">
+                        <table class="table" id="tbClass">
                             <tr>
                                 <th>#</th>
                                 <th>课号</th>
@@ -96,30 +114,7 @@
                                 <th>上课时间</th>
                                 <th></th>
                             </tr>
-                            <tr>
-                            	<td>1</td>
-                            	<td>#</td>
-                            	<td>#</td>
-                            	<td>#</td>
-                            	<td>#</td>
-                            	<td>#</td>
-                                <td>#</td>
-                                <td>
-                                    <button class="btn btn-primary" id="makesure">确定</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>#</td>
-                                <td>#</td>
-                                <td>#</td>
-                                <td>#</td>
-                                <td>#</td>
-                                <td>#</td>
-                                <td>
-                                    <button class="btn btn-primary" id="makesure">确定</button>
-                                </td>
-                            </tr>
+                           @Html.Partial("TableIndex", Model)
                         </table>
                     </div> 
                 </div>
