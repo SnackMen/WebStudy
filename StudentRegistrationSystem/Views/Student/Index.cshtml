@@ -14,6 +14,11 @@
     <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
     <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
     <script src="~/Content/js/studentIndex.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
 </head>
 <body>
     <div>
@@ -87,13 +92,13 @@
                         @using (Ajax.BeginForm("TableIndex", "Student", new AjaxOptions
                         {
                             HttpMethod = "Post",
-                            UpdateTargetId = "tbClass",
+                            UpdateTargetId = "select-cno-result",
                             InsertionMode = InsertionMode.InsertAfter
                         }))
                         {
                              <div class="form-group">
                                 <label class="select-cno">课号</label>
-                                @Html.TextBox("cno", null, new { @class = "form-control", @style = "width:300px;" })
+                                @Html.TextBox("cno", null, new { @class = "form-control", @style = "width:300px;"})
                             </div>
                             <div>
                                 <label class="select-cno">课名</label>
@@ -103,19 +108,7 @@
                         }
                     </div>
                     <div id="select-cno-result">
-                        <table class="table" id="tbClass">
-                            <tr>
-                                <th>#</th>
-                                <th>课号</th>
-                                <th>课名</th>
-                                <th>学分</th>
-                                <th>所属专业</th>
-                                <th>教师姓名</th>
-                                <th>上课时间</th>
-                                <th></th>
-                            </tr>
-                           @Html.Partial("TableIndex", Model)
-                        </table>
+                       
                     </div> 
                 </div>
                 <div id="dropcouse">

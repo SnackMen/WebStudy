@@ -23,6 +23,8 @@
         $("#dropcouse").css({ "display": "none" });
         $("#grades").css({ "display": "block" }); 
     });
+    $("submit").click(function () {
+        $("#select-cno-result").empty();
+    });
 })
-
 
