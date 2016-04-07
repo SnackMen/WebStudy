@@ -3,6 +3,7 @@ using StudentRegistrationSystem.Models;
 using System.Web.Mvc;
 using System.Linq;
 using System.Collections.Generic;
+using System;
 namespace StudentRegistrationSystem.Controllers
 {
     public class StudentController : Controller
@@ -15,6 +16,7 @@ namespace StudentRegistrationSystem.Controllers
 			return View();
 		}
 		[HttpPost]
+		[OutputCache(NoStore = true, Duration = 0, VaryByParam = "*")]
 		public ActionResult TableIndex(FormCollection fc)
 		{
 			string cno = fc["cno"].Replace(" ", "");
@@ -27,6 +29,24 @@ namespace StudentRegistrationSystem.Controllers
 
 			}
 			return View(result);
+		}
+
+		[OutputCache(NoStore = true, Duration = 0, VaryByParam = "*")]
+		public ActionResult SelectCourseIndex()
+		{
+			return View();
+		}
+		public ActionResult DropCourseIndex()
+		{
+			return View();
+		}
+		public ActionResult QueryTimeTableIndex()
+		{
+			return View();
+		}
+		public ActionResult GradesIndex()
+		{
+			return View();
 		}
 		
 	}

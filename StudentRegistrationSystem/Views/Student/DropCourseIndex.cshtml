@@ -1,8 +1,5 @@
-﻿@using StudentRegistrationSystem.Models;
-@model List<SelectCourse>
-@{
+﻿@{
     Layout = null;
-    int i = 1;
 }
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
@@ -16,10 +13,14 @@
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
 <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
-<div id="makesure-div-submit">
-    <table class="table">
-        @if (Model != null)
-        {
+<div class="panel panel-default" style="width:900px;">
+    <div class="panel-heading">
+        <h3 class="panel-title" style="font-weight:bolder">
+            当前已选课程
+        </h3>
+    </div>
+    <div class="panel-body">
+        <table class="table">
             <tr>
                 <th>#</th>
                 <th>课号</th>
@@ -30,22 +31,30 @@
                 <th>上课时间</th>
                 <th></th>
             </tr>
-            foreach (var u in Model)
-            {
-                <tr>
-                    <td>@i</td>
-                    <td>@u.CNO.Replace(" ", "")</td>
-                    <td>@u.CNAME.Replace(" ", "")</td>
-                    <td>@u.CREDIT</td>
-                    <td>@u.CDEPT.Replace(" ", "")</td>
-                    <td>@u.TNAME.Replace(" ", "")</td>
-                    <td>@u.WEEK.Replace(" ", "") @u.TIME.Replace(" ", "")</td>
-                    <td><button class="btn btn-primary" id="select-makesure">确定</button></td>
-                </tr>
-                i++;
-            }
-        }
-    </table>
+            <tr>
+                <td>1</td>
+                <td>#</td>
+                <td>#</td>
+                <td>#</td>
+                <td>#</td>
+                <td>#</td>
+                <td>#</td>
+                <td>
+                    <button class="btn btn-primary" id="makesure">退课</button>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>#</td>
+                <td>#</td>
+                <td>#</td>
+                <td>#</td>
+                <td>#</td>
+                <td>#</td>
+                <td>
+                    <button class="btn btn-primary" id="makesure">退课</button>
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>
-
-
