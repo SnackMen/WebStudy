@@ -1,15 +1,6 @@
 ﻿@{
     Layout = null;
 }
-
-
-@*@using (Ajax.BeginForm("TableIndex", "Student", new AjaxOptions
-                    {
-                        HttpMethod = "Post",
-                        UpdateTargetId = "select-cno-result",
-                        InsertionMode = InsertionMode.InsertAfter
-                    }))
-{*@
     <div class="form-group">
         <label class="select-cno">课号</label>
         @Html.TextBox("cno", null, new { @class = "form-control", @style = "width:300px;" })
@@ -18,6 +9,4 @@
         <label class="select-cno">课名</label>
         @Html.TextBox("cname", null, new { @class = "form-control", @style = "width:300px;" }) <br />
     </div>
-    @*<button id="submit-select" type="submit" class="btn btn-default" style="background: #337ab7;color:white;font-weight:bolder">查询</button>
-}*@
 

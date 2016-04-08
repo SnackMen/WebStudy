@@ -13,5 +13,8 @@ namespace StudentRegistrationSystem.Models
 		public int CREDIT { get; set; }
 		public string CDEPT { get; set; }
 		public string TNAME { get; set; }
+		public string SEMESTER { get; set; }
+		public string TIME { get; set; }
+		public string WEEK { get; set; }
 	}
 }

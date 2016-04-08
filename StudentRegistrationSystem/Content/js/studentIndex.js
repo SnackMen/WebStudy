@@ -7,6 +7,9 @@
     $("#submit-select").click(function () {
         $("#select-cno-result").empty();
     });
+    $("#drop").click(function () {
+        $("#dropcourse").empty();
+    });
     $("#timetable").click(function () {
         $("#dropcouse").css({ "display": "none" });
         $("#grades").css({ "display": "none" });

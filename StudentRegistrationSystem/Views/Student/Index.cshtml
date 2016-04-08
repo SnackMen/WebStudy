@@ -58,8 +58,13 @@
                         </tr>
                         <tr>
                             <td>
-                                @*@Html.ActionLink("退课", null,null,new { @id = "drop", @class = "select" })*@
-                                <a href="javascript:" id="drop" class="select">退课</a>
+                                @*<a href="javascript:" id="drop" class="select">退课</a>*@
+                                @Ajax.ActionLink("退课", "DropCourseIndex", "Student", new AjaxOptions()
+                               {
+                                   HttpMethod = "Post",
+                                   UpdateTargetId = "dropcouse",
+                                   InsertionMode = InsertionMode.InsertAfter
+                               }, new { @id = "drop", @class = "select"})
                             </td>
                         </tr>
                         <tr>
