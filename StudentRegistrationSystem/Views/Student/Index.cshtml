@@ -50,7 +50,7 @@
                                 @*<a href="javascript:" id="select" class="select">选课</a>*@
                                 @Ajax.ActionLink("选课", "SelectCourseIndex", "Student", new AjaxOptions()
                                {
-                                   UpdateTargetId = "select-cno-message",
+                                   UpdateTargetId = "select-textbox",
                                    InsertionMode = InsertionMode.InsertAfter
                                }, new { @id = "select", @class = "select" })
                             </td>
@@ -80,7 +80,18 @@
             <div class="div-center">
                 <div id="selecourse">
                     <div id="select-cno-message">   
-                      
+                      @using (Ajax.BeginForm("TableIndex", "Student", new AjaxOptions
+                    {
+                        HttpMethod = "Post",
+                        UpdateTargetId = "select-cno-result",
+                        InsertionMode = InsertionMode.InsertAfter
+                    }))
+                    {
+                         <div id="select-textbox">
+
+                         </div>
+                        <button id="submit-select" type="submit" class="btn btn-default" style="background: #337ab7;color:white;font-weight:bolder;display:none">查询</button>
+                    }
                     </div>
                     <div id="select-cno-result">
                        

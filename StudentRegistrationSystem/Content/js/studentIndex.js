@@ -1,11 +1,11 @@
 ﻿$(document).ready(function () {
     $("#select").click(function () {
-        $("#select-cno-message").empty();
+        $("#submit-select").css({ "display": "block" });
+        $("#select-textbox").empty();
+        $("#select-cno-result").empty();
     });
-    $("#submit").click(function () {
-        if ($("#makesure-div-submit").parent().children().count==1) {
-            $("#makesure-div-submit").empty();
-        }
+    $("#submit-select").click(function () {
+        $("#select-cno-result").empty();
     });
     $("#timetable").click(function () {
         $("#dropcouse").css({ "display": "none" });
@@ -18,3 +18,4 @@
         $("#grades").css({ "display": "block" }); 
     });
 })
+

@@ -32,6 +32,7 @@ namespace StudentRegistrationSystem.Controllers
 		}
 
 		[OutputCache(NoStore = true, Duration = 0, VaryByParam = "*")]
+
 		public ActionResult SelectCourseIndex()
 		{
 			return View();
