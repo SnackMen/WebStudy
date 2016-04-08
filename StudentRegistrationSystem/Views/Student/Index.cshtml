@@ -59,9 +59,9 @@
                         <tr>
                             <td>
                                 @*<a href="javascript:" id="drop" class="select">退课</a>*@
-                                @Ajax.ActionLink("退课", "DropCourseIndex", "Student", new AjaxOptions()
+                                @Ajax.ActionLink("退课", "Index", "Student", new { sno = @TempData["sno"] }, new AjaxOptions()
                                {
-                                   HttpMethod = "Post",
+                                   HttpMethod="Post",
                                    UpdateTargetId = "dropcouse",
                                    InsertionMode = InsertionMode.InsertAfter
                                }, new { @id = "drop", @class = "select"})

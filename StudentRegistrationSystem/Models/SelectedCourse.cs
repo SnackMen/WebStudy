@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,6 +8,7 @@ namespace StudentRegistrationSystem.Models
 {
 	public class SelectedCourse
 	{
+		[Key]
 		public string SNO { get; set; }
 		public string CNO { get; set; }
 		public string CNAME { get; set; }

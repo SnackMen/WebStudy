@@ -97,11 +97,12 @@
 #selecourse{
     width:1180px;
     height:500px;
+    display:none;
 }
 #dropcouse{
     width:1180px;
     height:500px;
-
+    display:none;
 }
 #queryTimetable{
     width:1180px;

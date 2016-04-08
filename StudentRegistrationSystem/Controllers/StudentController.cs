@@ -12,6 +12,8 @@ namespace StudentRegistrationSystem.Controllers
         // GET: /Student/
 		private List<SelectCourse> result = new List<SelectCourse> { };
 		private List<SelectedCourse> selectedResult = new List<SelectedCourse> { };
+
+		[HttpGet]
 		public ActionResult Index()
 		{
 			return View();
@@ -39,14 +41,17 @@ namespace StudentRegistrationSystem.Controllers
 			return View();
 		}
 
-		
-		public ActionResult DropCourseIndex()
+		[HttpPost]
+		public ActionResult Index(string sno)
 		{
 			SelectedCourseDBContext selectedcourse = new SelectedCourseDBContext();
-			selectedResult = selectedcourse.SelectedCourses.Where(u =>u.SNO == "S1" && u.SEMESTER != null).ToList();
-			return View(selectedResult);
+			selectedResult = selectedcourse.SelectedCourses.Where(u => u.SNO.Replace(" ", "") == sno  && u.SEMESTER.Replace(" ", "") !=null).ToList();
+			return PartialView("DropCourseIndex",selectedResult);
 		}
-	
+		public ActionResult DropCourseIndex()
+		{
+			return View();
+		}
 		public ActionResult QueryTimeTableIndex()
 		{
 			return View();
@@ -55,6 +60,9 @@ namespace StudentRegistrationSystem.Controllers
 		{
 			return View();
 		}
-		
+		//public ActionResult TestIndex()
+		//{
+		//	return View();
+		//}
 	}
 }
