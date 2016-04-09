@@ -1,1 +1,42 @@
-﻿
+﻿@using StudentRegistrationSystem.Models;
+@*@model IQueryable<GradeAndCourse>*@
+@*@model IEnumerable<SelectCourse>*@
+@{
+    Layout = null;
+}
+<div class="panel panel-default" style="width:700px;">
+    <div class="panel-heading">
+        <h2 class="panel-title" style="font-weight:bolder">
+            课程成绩
+        </h2>
+    </div>
+    <div class="panel-body">
+        <table class="table">
+            @if (Model!= null)
+            {
+                 <tr>
+                <th>#</th>
+                <th>课号</th>
+                <th>课名</th>
+                <th>学分</th>
+                <th>分数</th>
+                <th>绩点</th>
+            </tr>
+                foreach (var u in Model)
+                {
+                     <tr>
+                        <td>1</td>
+                        <td>#</td>
+                        <td>@u.CNAME</td>
+                        <td>@u.CREDIT</td>
+                        <td>#</td>
+                        <td>1</td>
+                    </tr>
+                }
+           
+            }
+           
+        </table>
+        <div style="font-weight:bolder">平均绩点：</div>
+    </div>
+</div>

@@ -1,4 +1,5 @@
 ﻿@using StudentRegistrationSystem.Models;
+@using StudentRegistrationSystem.DBModels;
 @model List<SelectedCourse>
 @{
     Layout = null;
@@ -12,19 +13,19 @@
     </div>
     <div class="panel-body">
         <table class="table">
-            @if (Model != null)
+            @if (Model!= null)
             {
                 <tr>
-                <th>#</th>
-                <th>课号</th>
-                <th>课名</th>
-                <th>学分</th>
-                <th>所属专业</th>
-                <th>教师姓名</th>
-                <th>上课时间</th>
-                <th></th>
-            </tr>
-                foreach (var u in Model)
+                    <th>#</th>
+                    <th>课号</th>
+                    <th>课名</th>
+                    <th>学分</th>
+                    <th>所属专业</th>
+                    <th>教师姓名</th>
+                    <th>上课时间</th>
+                    <th></th>
+                </tr>
+                foreach (var  u in Model)
                 {
                     <tr>
                         <td>@i</td>
@@ -33,10 +34,10 @@
                         <td>@u.CREDIT</td>
                         <td>@u.CDEPT</td>
                         <td>@u.TNAME</td>
-                        <td>@u.WEEK @u.TIME</td>
+                        <td>@u.WEEK  &nbsp; @u.TIME</td>
                         <td><button class="btn btn-primary" id="makesure">退课</button></td>
-                   </tr>
-                    i++;
+                    </tr>
+                        i++;
                 }
             }
         </table>

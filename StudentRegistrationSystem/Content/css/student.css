@@ -98,21 +98,25 @@
     width:1180px;
     height:500px;
     display:none;
+    overflow:auto;
 }
 #dropcouse{
     width:1180px;
     height:500px;
     display:none;
+    overflow:auto;
 }
 #queryTimetable{
     width:1180px;
     height:500px;
     display:none;
+    overflow:auto;
 }
 #grades{
     width:1180px;
-    height:500px;
+    height:394px;
     display:none;
+    overflow:auto;
 }
 #select-cno-message{
     width:400px;

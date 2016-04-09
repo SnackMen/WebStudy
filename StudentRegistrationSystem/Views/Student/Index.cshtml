@@ -69,14 +69,22 @@
                         </tr>
                         <tr>
                             <td>
-                               @* @Html.ActionLink("课表查询", null, null, new { @id = "timetable", @class = "select" })*@
-                                <a href="javascript:" id="timetable" class="select">课表查询</a>
+                                @*<a href="javascript:" id="timetable" class="select">课表查询</a>*@
+                                 @Ajax.ActionLink("课表查询", "QueryTimeTableIndex", "Student", new AjaxOptions()
+                                {
+                                    UpdateTargetId="queryTimetable",
+                                    InsertionMode = InsertionMode.InsertAfter
+                                },new { @id = "timetable", @class = "select" })
                             </td>
                         </tr>
                         <tr>
                             <td>
-                               @* @Html.ActionLink("成绩查询", null, null, new { @id = "grade", @class = "select" })*@
-                                <a href="javascript:" id="grade" class="select">成绩查询</a>
+                                @*<a href="javascript:" id="grade" class="select">成绩查询</a>*@
+                                 @Ajax.ActionLink("成绩查询", "GradesIndex", "Student", new AjaxOptions()
+                                {
+                                    UpdateTargetId = "grades",
+                                    InsertionMode=InsertionMode.InsertAfter
+                                },new { @id = "grade", @class = "select" })
                             </td>
                         </tr>
                     </table>
@@ -106,77 +114,10 @@
                     
                 </div>
                 <div id="queryTimetable">
-                    <div class="panel panel-default" style="width:900px;">
-                        <div class="panel-heading">
-                            <h2 class="panel-title" style="font-weight:bolder">
-                                课程表
-                            </h2>
-                        </div>
-                        <div class="panel-body">
-                            <table class="table">
-                                <tr>
-                                    <th>#</th>
-                                    <th>课号</th>
-                                    <th>课名</th>
-                                    <th>学分</th>
-                                    <th>教师姓名</th>
-                                    <th>上课时间</th>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>#</td>
-                                    <td>#</td>
-                                    <td>#</td>
-                                    <td>#</td>
-                                    <td>#</td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>#</td>
-                                    <td>#</td>
-                                    <td>#</td>
-                                    <td>#</td>
-                                    <td>#</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
+                   
                 </div>
                 <div id="grades">
-                    <div class="panel panel-default" style="width:700px;">
-                        <div class="panel-heading">
-                            <h2 class="panel-title" style="font-weight:bolder">
-                                课程成绩
-                            </h2>
-                        </div>
-                        <div class="panel-body">
-                            <table class="table" >
-                                <tr>
-                                    <th>#</th>
-                                    <th>课号</th>
-                                    <th>课名</th>
-                                    <th>学分</th>
-                                    <th>成绩</th>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>#</td>
-                                    <td>#</td>
-                                    <td>#</td>
-                                    <td>#</td>
 
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>#</td>
-                                    <td>#</td>
-                                    <td>#</td>
-                                    <td>#</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

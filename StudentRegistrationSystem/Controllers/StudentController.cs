@@ -11,7 +11,6 @@ namespace StudentRegistrationSystem.Controllers
         //
         // GET: /Student/
 		private List<SelectCourse> result = new List<SelectCourse> { };
-		private List<SelectedCourse> selectedResult = new List<SelectedCourse> { };
 
 		[HttpGet]
 		public ActionResult Index()
@@ -45,24 +44,45 @@ namespace StudentRegistrationSystem.Controllers
 		public ActionResult Index(string sno)
 		{
 			SelectedCourseDBContext selectedcourse = new SelectedCourseDBContext();
-			selectedResult = selectedcourse.SelectedCourses.Where(u => u.SNO.Replace(" ", "") == sno  && u.SEMESTER.Replace(" ", "") !=null).ToList();
-			return PartialView("DropCourseIndex",selectedResult);
+			List<SelectedCourse> selectedResult = selectedcourse.SelectedCourses.Where(u => u.SNO.Replace(" ", "").Contains("S1") && u.SEMESTER.Replace(" ", "").Contains("15-16春")).Distinct().ToList();
+			return PartialView("DropCourseIndex", selectedResult);
 		}
 		public ActionResult DropCourseIndex()
 		{
 			return View();
 		}
-		public ActionResult QueryTimeTableIndex()
+		public ActionResult QueryTimeTableIndex(string sno)
 		{
-			return View();
+			//查询到了三条记录，数量正确，但是三条记录都是相同的
+			SelectedCourseDBContext selectedcourse = new SelectedCourseDBContext();
+			List<SelectedCourse> selectedResult = selectedcourse.SelectedCourses.Where(u => u.SNO.Replace(" ", "") == "S1" && u.SEMESTER.Replace(" ", "") != null).ToList();
+			
+			return View(selectedResult);
 		}
 		public ActionResult GradesIndex()
 		{
-			return View();
+			SelectCourseDBContext dbselectcourse = new SelectCourseDBContext();
+			GradeDBContext dbgrade = new GradeDBContext();
+			//GradeAndCourse gradecourse = new GradeAndCourse();
+			//var result = from tableCourse in dbselectcourse.SelectCourses
+			//					 join tableGrade in dbgrade.Grades on tableCourse.CNO equals tableGrade.CNO
+			//					 where tableGrade.SNO == "S1"
+			//					 select tableCourse.CNAME;
+							   //select new GradeAndCourse
+							   //{
+							   //	CNO = tableGrade.CNO,
+							   //	CNAME = tableCourse.CNAME,
+							   //	CREDIT = tableCourse.CREDIT,
+							   //	GRADE = tableGrade.GRADE
+							   //};
+			var result = from tableCourse in dbselectcourse.SelectCourses
+											where tableCourse.CNO == "C1"
+											select new
+											{
+												tableCourse.CNAME,
+												tableCourse.CREDIT
+											};
+			return View(result);
 		}
-		//public ActionResult TestIndex()
-		//{
-		//	return View();
-		//}
 	}
 }

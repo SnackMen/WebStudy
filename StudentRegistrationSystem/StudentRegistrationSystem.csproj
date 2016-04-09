@@ -126,6 +126,7 @@
     </Compile>
     <Compile Include="Models\BasicInfo.cs" />
     <Compile Include="Models\Grade.cs" />
+    <Compile Include="Models\GradeAndCourse.cs" />
     <Compile Include="Models\SelectCourse.cs" />
     <Compile Include="Models\SelectedCourse.cs" />
     <Compile Include="Models\Teaching.cs" />
