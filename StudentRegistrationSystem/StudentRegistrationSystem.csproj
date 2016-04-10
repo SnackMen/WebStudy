@@ -146,6 +146,10 @@
     <Content Include="Views\Student\DropCourseIndex.cshtml" />
     <Content Include="Views\Student\QueryTimeTableIndex.cshtml" />
     <Content Include="Views\Student\GradesIndex.cshtml" />
+    <Content Include="Views\Teacher\TeachQueryTable.cshtml" />
+    <Content Include="Views\Teacher\QueryTable.cshtml" />
+    <Content Include="Views\Teacher\StudentList1.cshtml" />
+    <Content Include="Views\Teacher\StudentList2.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

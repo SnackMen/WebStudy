@@ -58,6 +58,7 @@ namespace StudentRegistrationSystem.Controllers
 			
 			return View(selectedResult);
 		}
+		
 		public ActionResult GradesIndex()
 		{
 			SelectCourseDBContext dbselectcourse = new SelectCourseDBContext();

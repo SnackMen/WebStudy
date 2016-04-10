@@ -6,9 +6,13 @@
     width:1180px;
     height:500px;
     display:none;
+    overflow:auto;
 }
 #inputgrade{
     width:1180px;
     height:500px;
     display:none;
+}
+#showCourse{
+    overflow:auto;
 }
