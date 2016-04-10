@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -13,8 +14,6 @@ namespace StudentRegistrationSystem.Models
 		public string CNAME { get; set; }
 		public int CREDIT { get; set; }
 		public string GRADE { get; set; }
-
-		public IQueryable<GradeAndCourse> AdList { get; set; }
 
 	}
 }

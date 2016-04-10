@@ -53,7 +53,6 @@ namespace StudentRegistrationSystem.Controllers
 		}
 		public ActionResult QueryTimeTableIndex(string sno)
 		{
-			//查询到了三条记录，数量正确，但是三条记录都是相同的
 			SelectedCourseDBContext selectedcourse = new SelectedCourseDBContext();
 			List<SelectedCourse> selectedResult = selectedcourse.SelectedCourses.Where(u => u.SNO.Replace(" ", "") == "S1" && u.SEMESTER.Replace(" ", "") != null).ToList();
 			
@@ -63,25 +62,19 @@ namespace StudentRegistrationSystem.Controllers
 		{
 			SelectCourseDBContext dbselectcourse = new SelectCourseDBContext();
 			GradeDBContext dbgrade = new GradeDBContext();
-			//GradeAndCourse gradecourse = new GradeAndCourse();
-			//var result = from tableCourse in dbselectcourse.SelectCourses
-			//					 join tableGrade in dbgrade.Grades on tableCourse.CNO equals tableGrade.CNO
-			//					 where tableGrade.SNO == "S1"
-			//					 select tableCourse.CNAME;
-							   //select new GradeAndCourse
-							   //{
-							   //	CNO = tableGrade.CNO,
-							   //	CNAME = tableCourse.CNAME,
-							   //	CREDIT = tableCourse.CREDIT,
-							   //	GRADE = tableGrade.GRADE
-							   //};
-			var result = from tableCourse in dbselectcourse.SelectCourses
-											where tableCourse.CNO == "C1"
-											select new
-											{
-												tableCourse.CNAME,
-												tableCourse.CREDIT
-											};
+			List<SelectCourse> lsitSelectCourse = dbselectcourse.SelectCourses.ToList();
+			var listgrade = dbgrade.Grades.ToList();
+			var result = (from tableGrade in dbgrade.Grades
+						  join tableCourse in dbselectcourse.SelectCourses on tableGrade.CNO equals tableCourse.CNO
+						  where tableGrade.SNO == "S2"
+						  select new GradeAndCourse
+						  {
+							  CNO = tableGrade.CNO,
+							  CNAME = tableCourse.CNAME,
+							  CREDIT = tableCourse.CREDIT,
+							  GRADE = tableGrade.GRADE
+						  }).ToList();
+			//var result = from tableGrade in listgrade where tableGrade.SNO == "S1" select tableGrade.GRADE;
 			return View(result);
 		}
 	}

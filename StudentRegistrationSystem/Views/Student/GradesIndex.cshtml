@@ -1,6 +1,7 @@
 ﻿@using StudentRegistrationSystem.Models;
-@*@model IQueryable<GradeAndCourse>*@
-@*@model IEnumerable<SelectCourse>*@
+@model List<GradeAndCourse>
+@*@model <String>*@
+@*@model List<Grade>*@
 @{
     Layout = null;
 }
@@ -12,24 +13,25 @@
     </div>
     <div class="panel-body">
         <table class="table">
-            @if (Model!= null)
+            @if (Model!=null)
             {
                  <tr>
-                <th>#</th>
-                <th>课号</th>
-                <th>课名</th>
-                <th>学分</th>
-                <th>分数</th>
-                <th>绩点</th>
-            </tr>
+                    <th>#</th>
+                    <th>课号</th>
+                    <th>课名</th>
+                    <th>学分</th>
+                    <th>分数</th>
+                    <th>绩点</th>
+                     <th>@Model.Count()</th>
+                </tr>
                 foreach (var u in Model)
                 {
                      <tr>
                         <td>1</td>
+                        <td>@u</td>
                         <td>#</td>
-                        <td>@u.CNAME</td>
-                        <td>@u.CREDIT</td>
                         <td>#</td>
+                        <td>@u</td>
                         <td>1</td>
                     </tr>
                 }
