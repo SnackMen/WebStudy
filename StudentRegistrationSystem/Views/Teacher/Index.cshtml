@@ -37,7 +37,7 @@
                         </tr>
                         <tr>
                             <td width="40px">姓名：</td>
-                            <td>@ViewBag.tname</td>
+                            <td id="teacher-name-value">@ViewBag.tname</td>
                         </tr>
                     </table>
                 </div>
@@ -55,7 +55,12 @@
                     <tr>
                         <td>
                             @*@Html.ActionLink("分数录入", null, null, new { @id = "input", @class = "select" })*@
-                            <a href="javascript:" id="input" class="select">分数录入</a>
+                            @Ajax.ActionLink("分数录入", "CourseSchedule", "Teacher", new { tname = @ViewBag.tname }, new AjaxOptions()
+                            {
+                                InsertionMode=InsertionMode.InsertAfter,
+                                UpdateTargetId = "schedule-studentclass"
+                           },new { @id = "input", @class = "select" })
+                            @*<a href="javascript:" id="input" class="select">分数录入</a>*@
                             @*分数录入包含分数更改*@
                         </td>
                     </tr>
@@ -73,7 +78,12 @@
                 </div>
             </div>
             <div id="inputgrade">
-               
+                <div id="schedule-studentclass">
+
+                </div>
+               <div id="grade-studentclass">
+
+               </div>
             </div>
         </div>
     </div>

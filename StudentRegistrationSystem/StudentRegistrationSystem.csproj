@@ -150,6 +150,8 @@
     <Content Include="Views\Teacher\QueryTable.cshtml" />
     <Content Include="Views\Teacher\StudentList1.cshtml" />
     <Content Include="Views\Teacher\StudentList2.cshtml" />
+    <Content Include="Views\Teacher\StudentGrade.cshtml" />
+    <Content Include="Views\Teacher\CourseSchedule.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

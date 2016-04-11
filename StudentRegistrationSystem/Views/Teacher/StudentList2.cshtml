@@ -1,4 +1,64 @@
-﻿@{
+﻿@using StudentRegistrationSystem.Models;
+@model List<BasicInfo>
+@{
     Layout = null;
+    int i = 0;
 }
-这是第二个学生名单表
+<table class="table table-bordered" style="table-layout:fixed;word-break:break-all;">
+    @if (Model != null)
+    {
+        <tr>
+            <th>序号</th>
+            <th>学号</th>
+            <th>姓名</th>
+            <th>第一周</th>
+            <th>第二周</th>
+            <th>第三周</th>
+            <th>第四周</th>
+            <th>第五周</th>
+            <th>第六周</th>
+            <th>第七周</th>
+            <th>第八周</th>
+            <th>第九周</th>
+            <th>第十周</th>
+        </tr>
+        foreach (var u in Model)
+        {
+            i++;
+            <tr>
+                <td>@i</td>
+                <td>@u.ID</td>
+                <td>@u.NAME</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            
+        }
+        for (int j = i + 1; j < 21; j++)
+        {
+            <tr>
+                <td>@j</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        }
+    }
+</table>
