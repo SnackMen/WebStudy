@@ -1,7 +1,7 @@
 ﻿@{
     Layout = null;
 }
-<ul class="nav nav-tabs nav-justified" style="width:600px">
+<ul class="nav nav-tabs nav-justified" style="width:400px">
     @for (int i = 0; i < @ViewBag.count; i++)
     {
         <li><a href="#" id="@i.ToString()">@TempData[i.ToString()]学生名单</a></li>

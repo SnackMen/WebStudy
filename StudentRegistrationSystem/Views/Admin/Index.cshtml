@@ -13,6 +13,14 @@
     <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
     <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
     <script src="~/Content/js/adminiIndex.js"></script>
+    <script src="~/Content/css/bootstrap-datetimepicker.min.css"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/bootstrap-datetimepicker.fr.js"></script>
+    <script src="~/Scripts/bootstrap-datetimepicker.js"></script>
 </head>
 <body>
     <div>
@@ -37,7 +45,7 @@
                     </table>
                 </div>
                 <div class="div-left-title2">
-                    <table height="40">
+                    <table height="60">
                         <tr>
                             <td>
                                 @*@Html.ActionLink("加课", null, null, new { @id = "addcourse", @class = "select" })*@
@@ -50,6 +58,12 @@
                                 <a href="javascript:" id="expancourse" class="select">课程扩容</a>
                             </td>
                         </tr>
+                        <tr>
+                            <td>
+                                @*@Html.ActionLink("课程扩容", null, null, new { @id = "expancourse", @class = "select" })*@
+                                <a href="javascript:" id="section" class="select">选课时间</a>
+                            </td>
+                        </tr>
                     </table>
                 </div>
             </div>
@@ -60,37 +74,37 @@
                         <div id="div-left">
                             <div class="form-group">
                                 <label class="insert-cno">课号</label>
-                                @Html.TextBox("cno", "#", new { @class = "form-control", @style = "width:200px;" })
+                                @Html.TextBox("cno",null, new { @class = "form-control", @style = "width:200px;" })
                             </div>
                             <div>
                                 <label class="insert-cno">课名</label>
-                                @Html.TextBox("cname", "#", new { @class = "form-control", @style = "width:200px;" }) <br />
+                                @Html.TextBox("cname",null, new { @class = "form-control", @style = "width:200px;" }) <br />
                             </div>
                             <div>
                                 <label class="insert-cno">学分</label>
-                                @Html.TextBox("credit", "#", new { @class = "form-control", @style = "width:200px;" }) <br />
+                                @Html.TextBox("credit", null,new { @class = "form-control", @style = "width:200px;" }) <br />
                             </div>
                             <div>
                                 <label class="insert-cno">专业</label>
-                                @Html.TextBox("cdept", "#", new { @class = "form-control", @style = "width:200px;" }) <br />
+                                @Html.TextBox("cdept", null,new { @class = "form-control", @style = "width:200px;" }) <br />
                             </div>
                         </div>
                         <div id="div-right">
                             <div class="form-group">
                                 <label class="insert-cno">姓名</label>
-                                @Html.TextBox("cno", "#", new { @class = "form-control", @style = "width:200px;" })
+                                @Html.TextBox("cno",null, new { @class = "form-control", @style = "width:200px;" })
                             </div>
                             <div>
                                 <label class="insert-cno">时间</label>
-                                @Html.TextBox("cname", "#", new { @class = "form-control", @style = "width:200px;" }) <br />
+                                @Html.TextBox("cname",null, new { @class = "form-control", @style = "width:200px;" }) <br />
                             </div>
                             <div>
                                 <label class="insert-cno">星期</label>
-                                @Html.TextBox("credit", "#", new { @class = "form-control", @style = "width:200px;" }) <br />
+                                @Html.TextBox("credit",null, new { @class = "form-control", @style = "width:200px;" }) <br />
                             </div>
                             <div>
                                 <label class="insert-cno">课程容量</label>
-                                @Html.TextBox("cdept", "#", new { @class = "form-control", @style = "width:200px;" }) <br />
+                                @Html.TextBox("cdept", null,new { @class = "form-control", @style = "width:200px;" }) <br />
                             </div>
                         </div>
                           
@@ -103,19 +117,37 @@
                         <div id="div-left">
                             <div class="form-group">
                                 <label class="insert-cno">课号</label>
-                                @Html.TextBox("cno-insert", "#", new { @class = "form-control", @style = "width:200px;" })
+                                @Html.TextBox("cno-insert",null, new { @class = "form-control", @style = "width:200px;" })
                             </div>
                             <div>
                                 <label class="insert-cno">课名</label>
-                                @Html.TextBox("cname-insert", "#", new { @class = "form-control", @style = "width:200px;" }) <br />
+                                @Html.TextBox("cname-insert", null,new { @class = "form-control", @style = "width:200px;" }) <br />
                             </div>
                             <div>
                                 <label class="insert-cno">课程容量</label>
-                                @Html.TextBox("cdept-insert", "#", new { @class = "form-control", @style = "width:200px;" }) <br />
+                                @Html.TextBox("cdept-insert",null, new { @class = "form-control", @style = "width:200px;" }) <br />
                             </div>
                         </div>
 
                         <button type="submit" class="btn btn-default" style="background: #337ab7;color:white;font-weight:bolder">扩容</button>
+                    }
+                </div>
+                <div id="settime">
+                    @using (Html.BeginForm("SetTime", "Admin", FormMethod.Post))
+                    {
+                        <div class="input-append date" id="datetimepicker"  data-date-format="yyyy-mm-dd hh ii">
+                            <label class="insert-cno">选课开始时间</label> <br>
+                            <input class="span2 form-control" size="16" type="text" style="width:200px" />
+                            <span class="add-on"><i class="icon-th"></i></span>
+                        </div>
+                        <br>
+                        <div class="input-append date" id="datetimepicker"  data-date-format="yyyy-mm-dd hh ii">
+                            <label class="insert-cno">选课结束时间</label> <br>
+                            <input class="span2 form-control" size="16" type="text" style="width:200px" />
+                            <span class="add-on"><i class="icon-th"></i></span>
+                        </div> 
+                        <br>
+                        <button type="submit" class="btn btn-default" style="background: #337ab7;color:white;font-weight:bolder">确定</button>
                     }
                 </div>
             </div>
