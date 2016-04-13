@@ -112,43 +112,48 @@
                     }
                 </div>
                 <div id="expan">
-                    @using (Html.BeginForm("Index", "Admin", FormMethod.Post))
-                    {
+                    <form method="post">
                         <div id="div-left">
                             <div class="form-group">
                                 <label class="insert-cno">课号</label>
-                                @Html.TextBox("cno-insert",null, new { @class = "form-control", @style = "width:200px;" })
+                                @Html.TextBox("cno-insert", null, new { @class = "form-control", @style = "width:200px;" })
                             </div>
                             <div>
                                 <label class="insert-cno">课名</label>
-                                @Html.TextBox("cname-insert", null,new { @class = "form-control", @style = "width:200px;" }) <br />
+                                @Html.TextBox("cname-insert", null, new { @class = "form-control", @style = "width:200px;" }) <br />
                             </div>
                             <div>
-                                <label class="insert-cno">课程容量</label>
-                                @Html.TextBox("cdept-insert",null, new { @class = "form-control", @style = "width:200px;" }) <br />
+                                <label class="insert-cno">所扩容量</label>
+                                @Html.TextBox("cdept-insert", null, new { @class = "form-control", @style = "width:200px;" }) <br />
                             </div>
                         </div>
-
-                        <button type="submit" class="btn btn-default" style="background: #337ab7;color:white;font-weight:bolder">扩容</button>
-                    }
+                        <button type="submit" id="dilatation" class="btn btn-default" style="background: #337ab7;color:white;font-weight:bolder">扩容</button>
+                    </form>
                 </div>
                 <div id="settime">
-                    @using (Html.BeginForm("SetTime", "Admin", FormMethod.Post))
+                    @using (Ajax.BeginForm("SetTime", "Admin", new AjaxOptions()
+                    {
+                       
+                    }))
                     {
                         <div class="input-append date" id="datetimepicker"  data-date-format="yyyy-mm-dd hh ii">
                             <label class="insert-cno">选课开始时间</label> <br>
-                            <input class="span2 form-control" size="16" type="text" style="width:200px" />
+                            @*<input class="span2 form-control" size="16" type="text" style="width:200px" />*@
+                            @Html.TextBox("begin-time", null, new { @class = "span2 form-control", @style = "width:200px;",size="16",type="text" })
                             <span class="add-on"><i class="icon-th"></i></span>
                         </div>
                         <br>
                         <div class="input-append date" id="datetimepicker"  data-date-format="yyyy-mm-dd hh ii">
                             <label class="insert-cno">选课结束时间</label> <br>
-                            <input class="span2 form-control" size="16" type="text" style="width:200px" />
+                            @*<input class="span2 form-control" size="16" type="text" style="width:200px" />*@
+                            @Html.TextBox("over-time", null, new { @class = "span2 form-control", @style = "width:200px;", size = "16", type = "text" })
                             <span class="add-on"><i class="icon-th"></i></span>
                         </div> 
                         <br>
-                        <button type="submit" class="btn btn-default" style="background: #337ab7;color:white;font-weight:bolder">确定</button>
+                        <button type="submit" id="submit-time" class="btn btn-default" style="background: #337ab7;color:white;font-weight:bolder">确定</button>
+                        <button type="reset" id="reset-time" class="btn btn-default" style="background: #337ab7;color:white;font-weight:bolder;position:relative;left:88px">重置</button>
                     }
+                    <div id="result"></div>
                 </div>
             </div>
         </div>

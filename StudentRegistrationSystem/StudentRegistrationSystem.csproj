@@ -88,6 +88,7 @@
   <ItemGroup>
     <Content Include="Content\css\admini.css" />
     <Content Include="Content\css\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\buttonStyle.css" />
     <Content Include="Content\css\student.css" />
     <Content Include="Content\css\staffstyle.css" />
@@ -101,6 +102,7 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.fr.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -120,6 +122,7 @@
     <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="Controllers\WelcomeController.cs" />
     <Compile Include="DBModels\BasicInfoDBContext.cs" />
+    <Compile Include="DBModels\ScheduleDBContext.cs" />
     <Compile Include="DBModels\TeachingDBContext.cs" />
     <Compile Include="DBModels\GradeDBContext.cs" />
     <Compile Include="DBModels\SelectCourseDBContext.cs" />
@@ -130,6 +133,7 @@
     <Compile Include="Models\BasicInfo.cs" />
     <Compile Include="Models\Grade.cs" />
     <Compile Include="Models\GradeAndCourse.cs" />
+    <Compile Include="Models\Schedule.cs" />
     <Compile Include="Models\SelectCourse.cs" />
     <Compile Include="Models\SelectedCourse.cs" />
     <Compile Include="Models\Teaching.cs" />
