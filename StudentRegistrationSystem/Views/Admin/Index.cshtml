@@ -54,8 +54,12 @@
                         </tr>
                         <tr>
                             <td>
-                                @*@Html.ActionLink("课程扩容", null, null, new { @id = "expancourse", @class = "select" })*@
-                                <a href="javascript:" id="expancourse" class="select">课程扩容</a>
+                                @Ajax.ActionLink("课程扩容", "InputFiled", "Admin", new AjaxOptions()
+                               {
+                                   InsertionMode = InsertionMode.InsertAfter,
+                                   UpdateTargetId = "expan"
+                               }, new { @id = "expancourse", @class = "select" })
+                                @*<a href="javascript:" id="expancourse" class="select">课程扩容</a>*@
                             </td>
                         </tr>
                         <tr>
@@ -112,23 +116,7 @@
                     }
                 </div>
                 <div id="expan">
-                    <form method="post">
-                        <div id="div-left">
-                            <div class="form-group">
-                                <label class="insert-cno">课号</label>
-                                @Html.TextBox("cno-insert", null, new { @class = "form-control", @style = "width:200px;" })
-                            </div>
-                            <div>
-                                <label class="insert-cno">课名</label>
-                                @Html.TextBox("cname-insert", null, new { @class = "form-control", @style = "width:200px;" }) <br />
-                            </div>
-                            <div>
-                                <label class="insert-cno">所扩容量</label>
-                                @Html.TextBox("cdept-insert", null, new { @class = "form-control", @style = "width:200px;" }) <br />
-                            </div>
-                        </div>
-                        <button type="submit" id="dilatation" class="btn btn-default" style="background: #337ab7;color:white;font-weight:bolder">扩容</button>
-                    </form>
+                    
                 </div>
                 <div id="settime">
                     @using (Ajax.BeginForm("SetTime", "Admin", new AjaxOptions()

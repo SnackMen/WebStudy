@@ -1,0 +1,21 @@
+﻿@{
+    Layout = null;
+}
+<form method="post">
+        <div id="div-left">
+            <div class="form-group">
+                <label class="insert-cno">课号</label>
+                @Html.TextBox("cno-insert", null, new { @class = "form-control", @style = "width:200px;" })
+            </div>
+            <div>
+                <label class="insert-cno">课名</label>
+                @Html.TextBox("cname-insert", null, new { @class = "form-control", @style = "width:200px;" }) <br />
+            </div>
+            <div>
+                <label class="insert-cno">所扩容量</label>
+                @Html.TextBox("cdept-insert", null, new { @class = "form-control", @style = "width:200px;" }) <br />
+            </div>
+        </div>
+</form>
+<button type="submit" id="dilatation" class="btn btn-default" style="background: #337ab7;color:white;font-weight:bolder">扩容</button>
+<button type="reset" id="resetdilatation" class="btn btn-default" style="background: #337ab7;color:white;font-weight:bolder;position:relative;left:88px">重置</button>

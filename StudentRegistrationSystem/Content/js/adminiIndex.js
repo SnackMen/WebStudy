@@ -5,9 +5,11 @@
         $("#add").css({ "display": "block" });
     });
     $("#expancourse").click(function () {
+        $("#expan").empty();
         $("#add").css({ "display": "none" });
         $("#settime").css({ "display": "none" });
         $("#expan").css({ "display": "block" });
+
     });
     $("#section").click(function () {
         $("#add").css({ "display": "none" });
@@ -30,23 +32,30 @@
         $("#begin-time").attr("readonly", false);
         $("#over-time").attr("readonly", false);
     });
-    $("#dilatation").click(function () {
-        //$.ajax({
-        //    type: "get",
-        //    contentType: "application/json",
-        //    url: "/Admin/Dilatation",
-        //    data: { 'classNumber': $("#cno-insert").val(), 'className': $("#cname-insert").val(), 'classCapacity': $("#cdept-insert").val() },
-        //    success: function (result) {
-        //        alert(result);
-        //    },
-        //    error:function(){
-        //        alert("出错了");
-        //    }
-        var cno = $("#cno-insert").text();
-        var cname = $("#cname-insert").text();
-        var cnumber = $("#cdept-insert").text();
-        $.get("/Admin/Dilatation",{classNumber:cno,className:cname,classCapacity:cnumber},function(result){
-            alert(result);
+    $("#expan").on("click", "#dilatation", this, function (event) {
+        var cno = $("#cno-insert").val();
+        var cname = $("#cname-insert").val();
+        var cnumber = $("#cdept-insert").val();
+        $.ajax({
+            type: "get",
+            contentType: "application/json",
+            url: "/Admin/Dilatation",
+            async: false,
+            data: { classNumber: cno, className: cname, classCapacity: cnumber },
+            success: function (result) {
+                alert(result);
+                
+
+            },
+            error: function () {
+                alert("出错了");
+            }
         });
     });
+    $("#expan").on("click", "#resetdilatation", this, function (event) {
+        $("#cno-insert").val("");
+        $("#cname-insert").val("");
+        $("#cdept-insert").val("");
+    });
+
 })

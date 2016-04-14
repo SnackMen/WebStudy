@@ -77,6 +77,7 @@ namespace StudentRegistrationSystem.Controllers
 			}
 			return View("Index");
 		}
+
 		[WebMethod]
 		public string Dilatation(string classNumber, string className, string classCapacity)
 		{
@@ -93,8 +94,34 @@ namespace StudentRegistrationSystem.Controllers
 				result.CAPACITY = number + Convert.ToInt32(classCapacity);
 				selectDbCourse.SaveChanges();
 				message = "扩容成功";
+				
 			}
+			
 			return message;
 		}
+		public ActionResult InputFiled()
+		{
+			return View();
+		}
+		//[HttpPost]
+		//public string InputFiled(string classNumber, string className, string classCapacity)
+		//{
+		//	string message = null;
+		//	SelectCourseDBContext selectDbCourse = new SelectCourseDBContext();
+		//	var result = selectDbCourse.SelectCourses.Where(u => u.CNO == classNumber && u.CNAME == className).FirstOrDefault();
+		//	if (result == null)
+		//	{
+		//		message = "没有查到该课程！";
+		//		return message;
+		//	}
+		//	else
+		//	{
+		//		int number = result.CAPACITY;
+		//		result.CAPACITY = number + Convert.ToInt32(classCapacity);
+		//		selectDbCourse.SaveChanges();
+		//		message = "扩容成功";
+		//		return message;
+		//	}
+		//}
 	}
 }
