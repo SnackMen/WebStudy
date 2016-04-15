@@ -24,7 +24,6 @@ namespace StudentRegistrationSystem.Controllers
 			string cno = fc["cno"].Replace(" ", "");
 			string name = fc["cname"].Replace(" ", "");
 			SelectCourseDBContext selectCourse = new SelectCourseDBContext();
-			//var result = selectCourse.SelectCourses.ToList();
 			if (!string.IsNullOrEmpty(cno) && !string.IsNullOrEmpty(name))
 			{
 				result = selectCourse.SelectCourses.Where(u => u.CNO == cno && u.CNAME==name).ToList();
@@ -77,6 +76,34 @@ namespace StudentRegistrationSystem.Controllers
 						  }).ToList();
 			//var result = from tableGrade in listgrade where tableGrade.SNO == "S1" select tableGrade.GRADE;
 			return View(result);
+		}
+		public string StudentSelectCourse(string sno,string sname,string cno,string cname)
+		{
+			string result = null;
+			//SelectCourseDBContext selectDbContext = new SelectCourseDBContext();
+			//var message = selectDbContext.SelectCourses.Where(u => u.CNO == cno &&u.CNAME==cname).FirstOrDefault();
+			//SelectedCourseDBContext selectedDbContext = new SelectedCourseDBContext();
+			//var isSelected = selectedDbContext.SelectedCourses.Where(u => u.CNO == cno && u.SNO == sno).FirstOrDefault();
+			//if (message == null)
+			//{
+			//	result = "该课程不存在，请核实该课程信息!";
+			//}
+			//else if (message.SELECTEDNUM == message.CAPACITY)
+			//{
+			//	result = "该课程所选人数已达人数上限!";
+			//}
+			//else if (isSelected != null)
+			//{
+			//	result = "您已经选过该课程!";
+			//}
+			//else
+			//{
+			//	SelectedCourse selectedCourse = new SelectedCourse() { SNO = "S1", CNO = cno, CNAME = cname, CREDIT = Convert.ToInt32(credit), CDEPT = cdept, TNAME = tname, TIME = time, SEMESTER = "15-16春" };
+			//	selectedDbContext.SelectedCourses.Add(selectedCourse);
+			//	selectedDbContext.SaveChanges();
+			//}
+			result = sno + sname + cname + cno;
+			return result;
 		}
 	}
 }

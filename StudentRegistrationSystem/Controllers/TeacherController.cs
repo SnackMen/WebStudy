@@ -27,7 +27,7 @@ namespace StudentRegistrationSystem.Controllers
 			int i = 0;
 			GradeDBContext grade = new GradeDBContext();
 			SelectCourseDBContext selectCname = new SelectCourseDBContext();
-			List<SelectCourse> cname = selectCname.SelectCourses.Where(u => u.TNAME == tname).ToList();
+			List<SelectCourse> cname = selectCname.SelectCourses.Where(u => u.TNAME == "王晓名").ToList();
 			foreach (var u in cname)
 			{
 				@TempData[i.ToString()] = u.CNAME;

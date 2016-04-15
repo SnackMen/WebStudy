@@ -5,7 +5,7 @@
     int i = 1;
 }
 
-<div id="makesure-div-submit">
+@*<div id="makesure-div-submit">*@
     <table class="table">
         @if (Model != null)
         {
@@ -23,19 +23,20 @@
             {
                 <tr>
                     <td>@i</td>
-                    <td>@u.CNO.Replace(" ", "")</td>
-                    <td>@u.CNAME.Replace(" ", "")</td>
-                    <td>@u.CREDIT</td>
-                    <td>@u.CDEPT.Replace(" ", "")</td>
-                    <td>@u.TNAME.Replace(" ", "")</td>
-                    <td>@u.WEEK.Replace(" ", "") @u.TIME.Replace(" ", "")</td>
-                    <td><button class="btn btn-primary" id=@i onclick="alert(id)">确定</button></td>
+                    <td id="student-cno">@u.CNO.Replace(" ", "")</td>
+                    <td id="student-cname">@u.CNAME.Replace(" ", "")</td>
+                    <td id="student-credit">@u.CREDIT</td>
+                    <td id="student-cdept">@u.CDEPT.Replace(" ", "")</td>
+                    <td id="student-tname">@u.TNAME.Replace(" ", "")</td>
+                    <td id="student-time">@u.TIME.Replace(" ", "")</td>
+                    @*<td><button class="btn btn-primary" id=@i onclick="alert(id)">确定</button></td>*@
+                    <td><button class="btn btn-primary" id="makesure-button-submit">确定</button></td>
                 </tr>
                 i++;
             }
         }
     </table>
-</div>
+@*</div>*@
 
 
 

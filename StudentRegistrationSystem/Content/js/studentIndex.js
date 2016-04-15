@@ -32,5 +32,22 @@
         $("#grades").css({ "display": "block" });
         $("#grades").empty();
     });
+    $("#select-cno-result").on("click", "#makesure-button-submit", this, function (event) {
+        $.ajax({
+            type: "get",
+            contentType: "application/json",
+            url: "/Student/StudentSelectCourse",
+            async: false,
+            data: {cno:$("cno").text().trim(),cname:$("cname").text().trim(),
+                sno: $("#student-studentNo").text().trim(), sname: $("#student-studentName").text().trim()
+            },
+            success: function (result) {
+                alert(result);
+            },
+            error: function (result) {
+                alert("出错啦！");
+            }
+        });
+    })
 })
 

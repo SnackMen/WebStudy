@@ -137,7 +137,6 @@ namespace StudentRegistrationSystem.Controllers
 					selectDbContext.SaveChanges();
 					lastResult = "添加成功！";
 				}
-				
 			}
 			return lastResult;
 		}
