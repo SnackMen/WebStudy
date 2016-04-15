@@ -57,5 +57,42 @@
         $("#cname-insert").val("");
         $("#cdept-insert").val("");
     });
+    $("#addteachercourse").click(function () {
+        //var models = "{"+
+        //    "CNO:" + $("#CNO").val().trim()+","+ 
+        //    "CNAME:"+ $("#CNAME").val().trim()+","+ 
+        //    "TNO:"+ $("#TNO").val().trim()+","+
+        //    "TNAME:"+ $("#TNAME").val().trim()+","+
+        //    "CREDIT:"+ $("#CREDIT").val().trim()+","+
+        //    "CDEPT:"+ $("#CDEPT").val().trim()+","+
+        //    "TIME:"+ $("#TIME").val().trim()+","+
+        //    "WEEK:"+ $("#WEEK").val().trim()+","+
+        //    "CAPACITY:"+ $("#CAPACITY").val().trim()+","+
+        //    "SELECTEDNUM:"+0+
+        //"}";
+        
+        var CNO=$("#CNO").val().trim();
+        var CNAME=$("#CNAME").val().trim();
+        var TNO=$("#TNO").val().trim();
+        var TNAME=$("#TNAME").val().trim();
+        var CREDIT=$("#CREDIT").val().trim();
+        var CDEPT=$("#CDEPT").val().trim();
+        var TIME=$("#TIME").val().trim();
+        var CAPACITY=$("#CAPACITY").val().trim();
+        var SELECTEDNUM = 0;
+        $.ajax({
+            type: "get",
+            contentType: "application/json",
+            url: "/Admin/AddCourse",
+            async: false,
+            data: {cno:CNO,cname:CNAME,tno:TNO,tname:TNAME,credit:CREDIT,cdept:CDEPT,time:TIME,capacity:CAPACITY,selectednum:SELECTEDNUM},
+            success: function (result) {
+                alert(result);
+            },
+            error: function (result) {
+                alert("出错啦！");
+            }
+        });
+    });
 
 })

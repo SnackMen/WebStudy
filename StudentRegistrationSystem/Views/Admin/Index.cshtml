@@ -78,41 +78,50 @@
                         <div id="div-left">
                             <div class="form-group">
                                 <label class="insert-cno">课号</label>
-                                @Html.TextBox("cno",null, new { @class = "form-control", @style = "width:200px;" })
+                                @Html.TextBox("CNO",null, new { @class = "form-control", @style = "width:200px;" })
                             </div>
                             <div>
                                 <label class="insert-cno">课名</label>
-                                @Html.TextBox("cname",null, new { @class = "form-control", @style = "width:200px;" }) <br />
+                                @Html.TextBox("CNAME",null, new { @class = "form-control", @style = "width:200px;" }) <br />
                             </div>
                             <div>
                                 <label class="insert-cno">学分</label>
-                                @Html.TextBox("credit", null,new { @class = "form-control", @style = "width:200px;" }) <br />
+                                @Html.TextBox("CREDIT", null,new { @class = "form-control", @style = "width:200px;" }) <br />
                             </div>
+                        </div>
+                        <div id="div-left-center">
                             <div>
                                 <label class="insert-cno">专业</label>
-                                @Html.TextBox("cdept", null,new { @class = "form-control", @style = "width:200px;" }) <br />
+                                @Html.TextBox("CDEPT", null, new { @class = "form-control", @style = "width:200px;" }) <br />
+                            </div>
+                            <div>
+                                <label class="insert-cno">工号</label>
+                                @Html.TextBox("TNO", null, new { @class = "form-control", @style = "width:200px;" }) <br />
+                            </div>
+                            <div class="form-group">
+                                <label class="insert-cno">姓名</label>
+                                @Html.TextBox("TNAME", null, new { @class = "form-control", @style = "width:200px;" })
                             </div>
                         </div>
                         <div id="div-right">
-                            <div class="form-group">
-                                <label class="insert-cno">姓名</label>
-                                @Html.TextBox("cno",null, new { @class = "form-control", @style = "width:200px;" })
-                            </div>
+                            
                             <div>
                                 <label class="insert-cno">时间</label>
-                                @Html.TextBox("cname",null, new { @class = "form-control", @style = "width:200px;" }) <br />
+                                @Html.TextBox("TIME",null, new { @class = "form-control", @style = "width:200px;" }) <br />
                             </div>
-                            <div>
+                            @*<div>
                                 <label class="insert-cno">星期</label>
-                                @Html.TextBox("credit",null, new { @class = "form-control", @style = "width:200px;" }) <br />
-                            </div>
+                                @Html.TextBox("WEEK",null, new { @class = "form-control", @style = "width:200px;" }) <br />
+                            </div>*@
                             <div>
                                 <label class="insert-cno">课程容量</label>
-                                @Html.TextBox("cdept", null,new { @class = "form-control", @style = "width:200px;" }) <br />
+                                @Html.TextBox("CAPACITY", null,new { @class = "form-control", @style = "width:200px;" }) <br />
                             </div>
+                           
                         </div>
-                          
-                        <button type="submit" class="btn btn-default" style="background: #337ab7;color:white;font-weight:bolder">添加</button>
+                        <input type="button" id="addteachercourse" class="btn btn-default" value="添加" style="background: #337ab7;color:white;font-weight:bolder">
+                        
+                        <button type="reset" class="btn btn-default" style="background: #337ab7;color:white;font-weight:bolder">重置</button>
                     }
                 </div>
                 <div id="expan">

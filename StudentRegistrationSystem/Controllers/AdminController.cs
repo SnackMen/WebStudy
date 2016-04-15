@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 using System.Web.Services;
 
 namespace StudentRegistrationSystem.Controllers
@@ -103,25 +104,42 @@ namespace StudentRegistrationSystem.Controllers
 		{
 			return View();
 		}
-		//[HttpPost]
-		//public string InputFiled(string classNumber, string className, string classCapacity)
-		//{
-		//	string message = null;
-		//	SelectCourseDBContext selectDbCourse = new SelectCourseDBContext();
-		//	var result = selectDbCourse.SelectCourses.Where(u => u.CNO == classNumber && u.CNAME == className).FirstOrDefault();
-		//	if (result == null)
-		//	{
-		//		message = "没有查到该课程！";
-		//		return message;
-		//	}
-		//	else
-		//	{
-		//		int number = result.CAPACITY;
-		//		result.CAPACITY = number + Convert.ToInt32(classCapacity);
-		//		selectDbCourse.SaveChanges();
-		//		message = "扩容成功";
-		//		return message;
-		//	}
-		//}
+
+		public string AddCourse(string tno,string tname,string cno,string cname,string credit,string cdept,string time,string selectednum,string capacity)
+		{
+			string lastResult = null;
+			BasicInfoDBContext basicDbInfo = new BasicInfoDBContext();
+			SelectCourse selectcourse;
+			SelectCourseDBContext selectDbContext = new SelectCourseDBContext();
+			var result = basicDbInfo.Basics.Where(u => u.ID == tno && u.NAME == tname).FirstOrDefault();//判断教师是否存在
+			//教师是否存在
+			if (result == null)
+			{
+				lastResult = "该教师不存在，请核实!";
+			}
+			//教师存在
+			else
+			{
+				var teacherTeachCourse = selectDbContext.SelectCourses.Where(u => u.TNAME == tname).ToList();
+				//该教师自己课程间是否冲突
+				foreach (var t in teacherTeachCourse)
+				{
+					if (t.TIME.ToString().Trim() == time||t.CNO.ToString().Trim()==cno)
+					{
+						lastResult = "该教师课时或课号冲突，请重新确认!";
+						break;
+					}
+				}
+				if (lastResult == null)
+				{
+					selectcourse = new SelectCourse() { CNO = cno, TNO = tno, CNAME = cname, CREDIT = Convert.ToInt32(credit), CDEPT = cdept, TNAME = tname, TIME = time, SELECTEDNUM = Convert.ToInt32(selectednum), CAPACITY = Convert.ToInt32(capacity) };
+					selectDbContext.SelectCourses.Add(selectcourse);
+					selectDbContext.SaveChanges();
+					lastResult = "添加成功！";
+				}
+				
+			}
+			return lastResult;
+		}
 	}
 }

@@ -10,7 +10,9 @@ namespace StudentRegistrationSystem.Models
 	public class SelectCourse
 	{
 		[Key]
+		public int ID { get; set; }
 		public string CNO { get; set; }
+		public string TNO { get; set; }
 		public string CNAME { get; set; }
 		public int CREDIT { get; set; }
 		public string CDEPT { get; set; }
@@ -18,6 +20,5 @@ namespace StudentRegistrationSystem.Models
 		public int SELECTEDNUM { get; set; }
 		public int CAPACITY { get; set; }
 		public string TIME { get; set; }
-		public string WEEK { get; set; }
 	}
 }
