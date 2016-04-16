@@ -96,6 +96,7 @@
     <Content Include="Content\img\bgimage.jpg" />
     <Content Include="Content\js\adminiIndex.js" />
     <Content Include="Content\js\ajaxrequest.js" />
+    <Content Include="Content\js\jquery-schedule.min.js" />
     <Content Include="Content\js\studentIndex.js" />
     <Content Include="Content\js\teacherIndex.js" />
     <Content Include="Global.asax" />
@@ -134,6 +135,7 @@
     <Compile Include="Models\Grade.cs" />
     <Compile Include="Models\GradeAndCourse.cs" />
     <Compile Include="Models\Schedule.cs" />
+    <Compile Include="Models\SearchResult.cs" />
     <Compile Include="Models\SelectCourse.cs" />
     <Compile Include="Models\SelectedCourse.cs" />
     <Compile Include="Models\Teaching.cs" />

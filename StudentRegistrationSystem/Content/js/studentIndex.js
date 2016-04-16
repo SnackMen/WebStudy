@@ -3,6 +3,7 @@
         $("#queryTimetable").css({ "display": "none" });
         $("#grades").css({ "display": "none" });
         $("#dropcouse").css({ "display": "none" });
+        $("#reset-select").css({ "display": "block" });
         $("#selecourse").css({ "display": "block" });
         $("#submit-select").css({ "display": "block" });
         $("#select-textbox").empty();
@@ -38,14 +39,31 @@
             contentType: "application/json",
             url: "/Student/StudentSelectCourse",
             async: false,
-            data: {cno:$("cno").text().trim(),cname:$("cname").text().trim(),
-                sno: $("#student-studentNo").text().trim(), sname: $("#student-studentName").text().trim()
+            data: {
+                cno: $("#student-cno").text().trim(), cname: $("#student-cname").text().trim(), credit: $("#student-credit").text().trim(),
+                cdept: $("#student-cdept").text().trim(), tname: $("#student-tname").text().trim(), time: $("#student-time").text(),
+                sno: $("#student-studentNo").text().trim()
             },
             success: function (result) {
                 alert(result);
             },
             error: function (result) {
                 alert("出错啦！");
+            }
+        });
+    });
+    $("#dropcouse").on("click", "#drop-makesure", this, function (event) {
+        $.ajax({
+            type: "get",
+            contextType: "application/json",
+            url: "/Student/DropCourse",
+            async: false,
+            data: { sno: $("#student-studentNo").text().trim(), cno: $(this).parent().siblings("#drop-cno").text().trim() },
+            success: function (result) {
+                alert(result);
+            },
+            error: function (result) {
+                alert("出错啦!");
             }
         });
     })
