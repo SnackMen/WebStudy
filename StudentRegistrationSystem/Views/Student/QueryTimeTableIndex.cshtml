@@ -1,8 +1,10 @@
 ﻿@using StudentRegistrationSystem.Models;
-@model List<SelectedCourse>
+@model List<RowColKey>
 @{
+    
     Layout = null;
     int k = 0;
+    int n=0;
 }
 
    <div class="panel panel-default" style="width:900px;">
@@ -19,107 +21,144 @@
     </div>
     <div class="panel-body">
         <table class="table table-bordered" style="table-layout:fixed;word-break:break-all;">
-            @if (Model != null)
+        @if (Model != null)
+        {
+            <tr>
+                <th>#</th>
+                <th>星期一</th>
+                <th>星期二</th>
+                <th>星期三</th>
+                <th>星期四</th>
+                <th>星期五</th>
+                <th>星期六</th>
+                <th>星期日</th>
+             </tr>
+            
+            for (int i = 0; i < 13; i++)
             {
                 <tr>
-                    <th>#</th>
-                    <th>星期一</th>
-                    <th>星期二</th>
-                    <th>星期三</th>
-                    <th>星期四</th>
-                    <th>星期五</th>
-                    <th>星期六</th>
-                    <th>星期日</th>
-                </tr>
-                for (int i = 1; i <= 13; i++)
-                {
-                    k = 0;
-                    for (int j = 0; j < Model.Count(); j++)
+                    <td>@(i+1)</td>
+                    @for (int m = 0; m < 7; m++)
                     {
-                        if (Convert.ToInt32(Model[j].TIME) == i)
+                        for (int j = 0; j < Model.Count(); j++)
                         {
-                            switch (Model[j].WEEK)
+                            if (Model[j].Row == i)
                             {
-                                case "一":
-                                    <tr>
-                                        <td>@i</td>
-                                        <td>@Model[j].CNAME</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    break;
-                                case "二":
-                                <tr>
-                                    <td>@i</td>
-                                    <td></td>
-                                    <td>@Model[j].CNAME</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                    break;
-                                case "三":
-                                <tr>
-                                    <td>@i</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>@Model[j].CNAME</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                    break;
-                                case "四":
-                                <tr>
-                                    <td>@i</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>@Model[j].CNAME</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                    break;
-                                case "五":
-                                <tr>
-                                    <td>@i</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>@Model[j].CNAME</td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                    break;
+                                if (Model[j].Col == m)
+                                {
+                                    n=1;
+                                    <td>@Model[j].Key</td>
+                                }
                             }
-                            k = 1;
                         }
+                        if(n==0){
+                            <td></td>
+                        }
+                        n=0;
                     }
-                    if (k == 0)
+                </tr>
+            }
+          }
+            </table>
+        </div>
+    </div>
+    @*@if (Model != null)
+    {
+        <tr>
+            <th>#</th>
+            <th>星期一</th>
+            <th>星期二</th>
+            <th>星期三</th>
+            <th>星期四</th>
+            <th>星期五</th>
+            <th>星期六</th>
+            <th>星期日</th>
+        </tr>
+        for (int i = 1; i <= 13; i++)
+        {
+            k = 0;
+            for (int j = 0; j < Model.Count(); j++)
+            {
+                if (Convert.ToInt32(Model[j].TIME) == i)
+                {
+                    switch (Model[j].WEEK)
                     {
+                        case "一":
+                            <tr>
+                                <td>@i</td>
+                                <td>@Model[j].CNAME</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            break;
+                        case "二":
                         <tr>
                             <td>@i</td>
                             <td></td>
-                            <td></td>
+                            <td>@Model[j].CNAME</td>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
                         </tr>
+                            break;
+                        case "三":
+                        <tr>
+                            <td>@i</td>
+                            <td></td>
+                            <td></td>
+                            <td>@Model[j].CNAME</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                            break;
+                        case "四":
+                        <tr>
+                            <td>@i</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>@Model[j].CNAME</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                            break;
+                        case "五":
+                        <tr>
+                            <td>@i</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>@Model[j].CNAME</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                            break;
                     }
+                    k = 1;
                 }
             }
-        </table>
-    </div>
-</div> 
-
+            if (k == 0)
+            {
+                <tr>
+                    <td>@i</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            }
+        }
+    }*@

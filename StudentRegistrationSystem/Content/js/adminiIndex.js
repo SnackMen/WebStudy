@@ -58,19 +58,6 @@
         $("#cdept-insert").val("");
     });
     $("#addteachercourse").click(function () {
-        //var models = "{"+
-        //    "CNO:" + $("#CNO").val().trim()+","+ 
-        //    "CNAME:"+ $("#CNAME").val().trim()+","+ 
-        //    "TNO:"+ $("#TNO").val().trim()+","+
-        //    "TNAME:"+ $("#TNAME").val().trim()+","+
-        //    "CREDIT:"+ $("#CREDIT").val().trim()+","+
-        //    "CDEPT:"+ $("#CDEPT").val().trim()+","+
-        //    "TIME:"+ $("#TIME").val().trim()+","+
-        //    "WEEK:"+ $("#WEEK").val().trim()+","+
-        //    "CAPACITY:"+ $("#CAPACITY").val().trim()+","+
-        //    "SELECTEDNUM:"+0+
-        //"}";
-        
         var CNO=$("#CNO").val().trim();
         var CNAME=$("#CNAME").val().trim();
         var TNO=$("#TNO").val().trim();

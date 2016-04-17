@@ -17,6 +17,23 @@ namespace StudentRegistrationSystem.Controllers
 		[HttpGet]
 		public ActionResult Index()
 		{
+			ScheduleDBContext scheduleDbContext = new ScheduleDBContext();
+			var startTime = scheduleDbContext.Schedules.Where(u => u.ID == 1).FirstOrDefault();
+			var endTime = scheduleDbContext.Schedules.Where(u => u.ID == 2).FirstOrDefault();
+			string time = DateTime.Now.ToString("yyyyMMddHHmm");
+			string startTm = startTime.Year + startTime.Month + startTime.Day + startTime.Hour + startTime.Minute;
+			string endTm = endTime.Year + endTime.Month + endTime.Day + endTime.Hour + endTime.Minute;
+			double start = Convert.ToDouble(startTm);
+			double end = Convert.ToDouble(endTm);
+			double now = Convert.ToDouble(time);
+			if (now >= start && now <= end)
+			{
+				@ViewData["timeMessage"] = "true";
+			}
+			else
+			{
+				@ViewData["timeMessage"] = "false";
+			}
 			return View();
 		}
 		[HttpPost]
@@ -54,10 +71,67 @@ namespace StudentRegistrationSystem.Controllers
 		}
 		public ActionResult QueryTimeTableIndex(string sno)
 		{
+			int n = 0;
+			string number = null;
+			string[,] timeTable = new string[13, 5];
 			SelectedCourseDBContext selectedcourse = new SelectedCourseDBContext();
 			List<SelectedCourse> selectedResult = selectedcourse.SelectedCourses.Where(u => u.SNO.Replace(" ", "") == "S1" && u.SEMESTER.Replace(" ", "") != null).ToList();
-			
-			return View(selectedResult);
+			Regex regexCharacter = new Regex("[\u4E00-\u9FA5]");
+			Regex regexDigit = new Regex(@"(\d{1,2})-(\d{1,2})");
+			foreach (var u in selectedResult)
+			{
+				MatchCollection characterRegex = regexCharacter.Matches(u.TIME);
+				MatchCollection digitRegex = regexDigit.Matches(u.TIME);
+				foreach (Match week in characterRegex)
+				{
+					int m = 0;
+					switch (week.Value.ToString())
+					{
+						case "一":
+							number = "1";
+							break;
+						case "二":
+							number = "2";
+							break;
+						case "三":
+							number = "3";
+							break;
+						case "四":
+							number = "4";
+							break;
+						case "五":
+							number = "5";
+							break;
+					}
+					foreach (Match classTime in digitRegex)
+					{
+						if (m == n)
+						{
+							string[] firstTime = classTime.Value.ToString().Split('-');
+							for (int i = Convert.ToInt32(firstTime[0])-1; i <= Convert.ToInt32(firstTime[1])-1; i++)
+							{
+								timeTable[i, Convert.ToInt32(number) - 1] = u.CNAME;
+							}
+						}
+						m++;
+					}
+					n++;
+				}
+			}
+			RowColKey rowColKey = null;
+			List<RowColKey> listRowColKey = new List<RowColKey>();
+			for (int i = 0; i < 13; i++)
+			{
+				for (int j = 0; j < 5; j++)
+				{
+					if (timeTable[i, j] != null)
+					{
+						rowColKey = new RowColKey() { Row = i, Col = j, Key = timeTable[i, j] };
+					}
+					listRowColKey.Add(rowColKey);
+				}
+			}
+			return View(listRowColKey);
 		}
 		
 		public ActionResult GradesIndex(string sno)
@@ -112,19 +186,6 @@ namespace StudentRegistrationSystem.Controllers
 				}
 				result.Add(searchResult);
 			}
-			//List<SelectCourse> lsitSelectCourse = dbselectcourse.SelectCourses.ToList();
-			//var listgrade = dbgrade.Grades.ToList();
-			//var result = (from tableGrade in dbgrade.Grades
-			//			  join tableCourse in dbselectcourse.SelectCourses on tableGrade.CNO equals tableCourse.CNO
-			//			  where tableGrade.SNO == "S2"
-			//			  select new GradeAndCourse
-			//			  {
-			//				  CNO = tableGrade.CNO,
-			//				  CNAME = tableCourse.CNAME,
-			//				  CREDIT = tableCourse.CREDIT,
-			//				  GRADE = tableGrade.GRADE
-			//			  }).ToList();
-			//var result = from tableGrade in listgrade where tableGrade.SNO == "S1" select tableGrade.GRADE;
 			return View(result);
 		}
 		public string StudentSelectCourse(string sno,string cno,string cname,string tname,string cdept,string credit,string time)

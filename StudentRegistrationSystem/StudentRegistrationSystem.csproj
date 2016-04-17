@@ -134,6 +134,7 @@
     <Compile Include="Models\BasicInfo.cs" />
     <Compile Include="Models\Grade.cs" />
     <Compile Include="Models\GradeAndCourse.cs" />
+    <Compile Include="Models\RowColKey.cs" />
     <Compile Include="Models\Schedule.cs" />
     <Compile Include="Models\SearchResult.cs" />
     <Compile Include="Models\SelectCourse.cs" />

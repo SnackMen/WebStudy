@@ -1,13 +1,19 @@
 ﻿$(document).ready(function () {
     $("#select").click(function () {
-        $("#queryTimetable").css({ "display": "none" });
-        $("#grades").css({ "display": "none" });
-        $("#dropcouse").css({ "display": "none" });
-        $("#reset-select").css({ "display": "block" });
-        $("#selecourse").css({ "display": "block" });
-        $("#submit-select").css({ "display": "block" });
-        $("#select-textbox").empty();
-        $("#select-cno-result").empty();
+        var time = $("#time-Message").val();
+        if (time == "true") {
+            $("#queryTimetable").css({ "display": "none" });
+            $("#grades").css({ "display": "none" });
+            $("#dropcouse").css({ "display": "none" });
+            $("#reset-select").css({ "display": "block" });
+            $("#selecourse").css({ "display": "block" });
+            $("#submit-select").css({ "display": "block" });
+            $("#select-textbox").empty();
+            $("#select-cno-result").empty();
+        }
+        else {
+            alert("选课时间未到，禁止选课!");
+        }
     });
     $("#submit-select").click(function () {
         $("#select-cno-result").empty();
