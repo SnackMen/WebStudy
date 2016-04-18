@@ -253,6 +253,7 @@ namespace StudentRegistrationSystem.Controllers
 		}
 		public string UpdateGrade(List<Grade> model)
 		{
+			//不知道怎么将json传递过来，先放着吧，不干了，等以后再弄到再搞，现在宣布此项目暂时停住
 			Grade grade = null;
 			GradeDBContext gradeDbContext = new GradeDBContext();
 			string result = null;
