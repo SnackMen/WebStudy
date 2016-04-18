@@ -45,7 +45,6 @@
                     <table height="40">
                         <tr>
                             <td>
-                                @*<a href="javascript:" id="timetable" class="select">课表查询</a>*@
                                 @Ajax.ActionLink("课表查询", "TeachQueryTable", "Teacher",new{tname=@ViewBag.tname},new AjaxOptions(){
                                InsertionMode = InsertionMode.InsertAfter,
                                UpdateTargetId = "shownavigation"
@@ -54,14 +53,11 @@
                     </tr>
                     <tr>
                         <td>
-                            @*@Html.ActionLink("分数录入", null, null, new { @id = "input", @class = "select" })*@
                             @Ajax.ActionLink("分数录入", "CourseSchedule", "Teacher", new { tname = @ViewBag.tname }, new AjaxOptions()
                             {
                                 InsertionMode=InsertionMode.InsertAfter,
                                 UpdateTargetId = "schedule-studentclass"
                            },new { @id = "input", @class = "select" })
-                            @*<a href="javascript:" id="input" class="select">分数录入</a>*@
-                            @*分数录入包含分数更改*@
                         </td>
                     </tr>
                     </table>

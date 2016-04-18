@@ -62,7 +62,7 @@ namespace StudentRegistrationSystem.Controllers
 		public ActionResult Index(string sno)
 		{
 			SelectedCourseDBContext selectedcourse = new SelectedCourseDBContext();
-			List<SelectedCourse> selectedResult = selectedcourse.SelectedCourses.Where(u => u.SNO.Replace(" ", "").Contains("S1") && u.SEMESTER.Replace(" ", "").Contains("15-16春")).Distinct().ToList();
+			List<SelectedCourse> selectedResult = selectedcourse.SelectedCourses.Where(u => u.SNO.Replace(" ", "").Contains(sno.Replace(" ","")) && u.SEMESTER.Replace(" ", "").Contains("15-16春")).Distinct().ToList();
 			return PartialView("DropCourseIndex", selectedResult);
 		}
 		public ActionResult DropCourseIndex()
@@ -71,15 +71,23 @@ namespace StudentRegistrationSystem.Controllers
 		}
 		public ActionResult QueryTimeTableIndex(string sno)
 		{
-			int n = 0;
+			
 			string number = null;
 			string[,] timeTable = new string[13, 5];
+			for (int i = 0; i < 13; i++)
+			{
+				for (int j = 0; j < 5; j++)
+				{
+					timeTable[i, j] = "0";
+				}
+			}
 			SelectedCourseDBContext selectedcourse = new SelectedCourseDBContext();
-			List<SelectedCourse> selectedResult = selectedcourse.SelectedCourses.Where(u => u.SNO.Replace(" ", "") == "S1" && u.SEMESTER.Replace(" ", "") != null).ToList();
+			List<SelectedCourse> selectedResult = selectedcourse.SelectedCourses.Where(u => u.SNO.Replace(" ", "") == sno && u.SEMESTER.Replace(" ", "") != null).ToList();
 			Regex regexCharacter = new Regex("[\u4E00-\u9FA5]");
 			Regex regexDigit = new Regex(@"(\d{1,2})-(\d{1,2})");
 			foreach (var u in selectedResult)
 			{
+				int n = 0;
 				MatchCollection characterRegex = regexCharacter.Matches(u.TIME);
 				MatchCollection digitRegex = regexDigit.Matches(u.TIME);
 				foreach (Match week in characterRegex)
@@ -88,19 +96,19 @@ namespace StudentRegistrationSystem.Controllers
 					switch (week.Value.ToString())
 					{
 						case "一":
-							number = "1";
+							number = "0";
 							break;
 						case "二":
-							number = "2";
+							number = "1";
 							break;
 						case "三":
-							number = "3";
+							number = "2";
 							break;
 						case "四":
-							number = "4";
+							number = "3";
 							break;
 						case "五":
-							number = "5";
+							number = "4";
 							break;
 					}
 					foreach (Match classTime in digitRegex)
@@ -108,9 +116,9 @@ namespace StudentRegistrationSystem.Controllers
 						if (m == n)
 						{
 							string[] firstTime = classTime.Value.ToString().Split('-');
-							for (int i = Convert.ToInt32(firstTime[0])-1; i <= Convert.ToInt32(firstTime[1])-1; i++)
+							for (int i = Convert.ToInt32(firstTime[0]) - 1; i <= Convert.ToInt32(firstTime[1]) - 1; i++)
 							{
-								timeTable[i, Convert.ToInt32(number) - 1] = u.CNAME;
+								timeTable[i, Convert.ToInt32(number)] = u.CNAME;
 							}
 						}
 						m++;
@@ -124,11 +132,11 @@ namespace StudentRegistrationSystem.Controllers
 			{
 				for (int j = 0; j < 5; j++)
 				{
-					if (timeTable[i, j] != null)
+					if (timeTable[i, j] != "0")
 					{
 						rowColKey = new RowColKey() { Row = i, Col = j, Key = timeTable[i, j] };
+						listRowColKey.Add(rowColKey);
 					}
-					listRowColKey.Add(rowColKey);
 				}
 			}
 			return View(listRowColKey);
@@ -139,7 +147,7 @@ namespace StudentRegistrationSystem.Controllers
 			SelectCourseDBContext dbselectcourse = new SelectCourseDBContext();
 			GradeDBContext dbgrade = new GradeDBContext();
 			SearchResult searchResult = null;
-			var dbClassNo = dbgrade.Grades.Where(u => u.SNO == "S1").ToList();
+			var dbClassNo = dbgrade.Grades.Where(u => u.SNO == sno).ToList();
 			List<SearchResult> result = new List<SearchResult>();
 			foreach (var u in dbClassNo)
 			{

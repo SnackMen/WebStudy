@@ -1,5 +1,4 @@
-﻿document.write("<script src='~/Content/js/mindmup-editabletable.js'><\/script>");
-$(function () {
+﻿$(function () {
     $("#timetable").click(function () {
         $("#shownavigation").empty();
         $("#inputgrade").css({ "display": "none" });
@@ -53,5 +52,27 @@ $(function () {
             $("#grade-studentclass").html(result);
         });
         $("#savegrade").css({ "display": "block" });
+    });
+    $("#savegrade").click(function () {
+        var models = [ ];
+        $.each($("#grade-studentclass table tr"), function (i, item) {
+            var sno = $(item).find($("[name=studentgradeid]")).text();
+            var sname = $(item).find($("[name=studentgradename]")).text();
+            var grade = $(item).find($("[name=student-input-grade]")).val();
+            models.push({ SNO: sno, SNAME: sname, GRADE: grade });
+        });
+        debugger;
+        $.ajax({
+            url: "/Teacher/UpdateGrade",
+            data: { "list": models },
+            type: "get",
+            contentType: "application/json,charset=utf-8",
+            success:function(result){
+                alert(result);
+            },
+            error: function (result) {
+                alert("出错啦!");
+            }
+        });
     });
 })

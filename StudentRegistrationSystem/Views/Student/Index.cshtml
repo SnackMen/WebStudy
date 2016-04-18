@@ -35,13 +35,11 @@
                     <table>
                         <tr>
                             <td width="40px">学号：</td>
-                            @*<td width="50px" id="student-studentNo">@TempData["sno"]</td>*@
-                            <td width="50px" id="student-studentNo">S1</td>
+                            <td width="50px" id="student-studentNo">@TempData["sno"]</td>
                         </tr>
                         <tr>
                             <td width="40px">姓名：</td>
-                            @*<td id="student-studentName">@TempData["name"]</td>*@
-                            <td id="student-studentName">李铭</td>
+                            <td id="student-studentName">@TempData["name"]</td>
                         </tr>
                     </table>
                 </div>
@@ -50,7 +48,6 @@
                         <tr>
                             <td>
                                 <input type="text" id="time-Message" value="@ViewData["timeMessage"]" style="display:none" />
-                                @*<a href="javascript:" id="select" class="select">选课</a>*@
                                 @Ajax.ActionLink("选课", "SelectCourseIndex", "Student", new AjaxOptions()
                                {
                                    UpdateTargetId = "select-textbox",
@@ -61,7 +58,6 @@
                         </tr>
                         <tr>
                             <td>
-                                @*<a href="javascript:" id="drop" class="select">退课</a>*@
                                 @Ajax.ActionLink("退课", "Index", "Student", new { sno = @TempData["sno"] }, new AjaxOptions()
                                {
                                    HttpMethod="Post",
@@ -72,7 +68,6 @@
                         </tr>
                         <tr>
                             <td>
-                                @*<a href="javascript:" id="timetable" class="select">课表查询</a>*@
                                  @Ajax.ActionLink("课表查询", "QueryTimeTableIndex", "Student", new { sno = @TempData["sno"]}, new AjaxOptions()
                                 {
                                     UpdateTargetId="queryTimetable",
@@ -82,7 +77,6 @@
                         </tr>
                         <tr>
                             <td>
-                                @*<a href="javascript:" id="grade" class="select">成绩查询</a>*@
                                  @Ajax.ActionLink("成绩查询", "GradesIndex", "Student", new { sno = @TempData["sno"] }, new AjaxOptions()
                                 {
                                     UpdateTargetId = "grades",

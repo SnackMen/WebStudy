@@ -1,8 +1,10 @@
 ﻿@using StudentRegistrationSystem.Models;
-@model List<SelectCourse>
+@*@model List<SelectCourse>*@
+@model List<RowColKey>
 @{
     Layout = null;
     int k = 0;
+    int n = 0;
 }
 
 <div class="panel panel-default" style="width:900px;">
@@ -31,7 +33,35 @@
                     <th>星期六</th>
                     <th>星期日</th>
                 </tr>
-                for (int i = 1; i <= 13; i++)
+                 for (int i = 0; i < 13; i++)
+            {
+                <tr>
+                    <td>@(i+1)</td>
+                    @for (int m = 0; m < 7; m++)
+                    {
+                        for (int j = 0; j < Model.Count(); j++)
+                        {
+                            if (Model[j].Row == i)
+                            {
+                                if (Model[j].Col == m)
+                                {
+                                    n=1;
+                                    <td>@Model[j].Key</td>
+                                }
+                            }
+                        }
+                        if(n==0){
+                            <td></td>
+                        }
+                        n=0;
+                    }
+                </tr>
+            }
+            }
+        </table>
+    </div>
+</div>
+ @*for (int i = 1; i <= 13; i++)
                 {
                     k = 0;
                     for (int j = 0; j < Model.Count(); j++)
@@ -41,64 +71,64 @@
                             switch (Model[j].WEEK)
                             {
                                 case "一":
-                                    <tr>
-                                        <td>@i</td>
-                                        <td>@Model[j].CNAME</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
+<tr>
+    <td>@i</td>
+    <td>@Model[j].CNAME</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+</tr>
                                     break;
                                 case "二":
-                                <tr>
-                                    <td>@i</td>
-                                    <td></td>
-                                    <td>@Model[j].CNAME</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+<tr>
+    <td>@i</td>
+    <td></td>
+    <td>@Model[j].CNAME</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+</tr>
                                     break;
                                 case "三":
-                                <tr>
-                                    <td>@i</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>@Model[j].CNAME</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+<tr>
+    <td>@i</td>
+    <td></td>
+    <td></td>
+    <td>@Model[j].CNAME</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+</tr>
                                     break;
                                 case "四":
-                                <tr>
-                                    <td>@i</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>@Model[j].CNAME</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+<tr>
+    <td>@i</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>@Model[j].CNAME</td>
+    <td></td>
+    <td></td>
+    <td></td>
+</tr>
                                     break;
                                 case "五":
-                                <tr>
-                                    <td>@i</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>@Model[j].CNAME</td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+<tr>
+    <td>@i</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>@Model[j].CNAME</td>
+    <td></td>
+    <td></td>
+</tr>
                                     break;
                             }
                             k = 1;
@@ -106,19 +136,16 @@
                     }
                     if (k == 0)
                     {
-                        <tr>
-                            <td>@i</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
+<tr>
+    <td>@i</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+</tr>
                     }
                 }
-            }
-        </table>
-    </div>
-</div>
+            }*@

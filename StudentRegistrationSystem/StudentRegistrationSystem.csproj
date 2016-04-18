@@ -139,6 +139,7 @@
     <Compile Include="Models\SearchResult.cs" />
     <Compile Include="Models\SelectCourse.cs" />
     <Compile Include="Models\SelectedCourse.cs" />
+    <Compile Include="Models\StudentGrade.cs" />
     <Compile Include="Models\Teaching.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

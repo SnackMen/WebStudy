@@ -1,5 +1,5 @@
 ﻿@using StudentRegistrationSystem.Models;
-@model List<BasicInfo>
+@model List<StudentGrade>
 @{
     Layout = null;
     int i = 0;
@@ -23,15 +23,15 @@
             int k = i + 20;
             <tr>
                 <td>@i</td>
-                <td id="studentgradeid">@u.ID</td>
-                <td id="studentgradename">@u.NAME</td>
-                <td id="gradeofstudent">
-                    <input type="text" name="name" style="width:130px;height:26px;padding:0;margin:0;" class="form-control"/> 
+                <td id="studentgradeid" name="studentgradeid">@u.SNO</td>
+                <td id="studentgradename" name="studentgradename">@u.SNAME</td>
+                <td id="gradeofstudent" name="gradeofstudent">
+                    <input type="text" id="student-input-grade" name="student-input-grade" style="width:130px;height:26px;padding:0;margin:0;" class="form-control" value="@u.GRADE" />
                 </td>
                 <td>@k</td>
-                <td id="studentgradeid"></td>
-                <td id="studentgradename"></td>
-                <td id="gradeofstudent">
+                <td></td>
+                <td></td>
+                <td>
                 </td>
             </tr>
         }
@@ -41,12 +41,12 @@
             <tr>
                 <td>@j</td>
                 <td></td>
-                <td id="studentgradename"></td>
-                <td id="gradeofstudent"></td>
+                <td></td>
+                <td></td>
                 <td>@k</td>
-                <td id="studentgradeid"></td>
-                <td id="studentgradename"></td>
-                <td id="gradeofstudent"></td>
+                <td></td>
+                <td></td>
+                <td></td>
             </tr>
         }
     }
