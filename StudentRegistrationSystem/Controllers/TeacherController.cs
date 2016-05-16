@@ -15,10 +15,19 @@ namespace StudentRegistrationSystem.Controllers
         // GET: /Teacher/
 		[HttpGet]
 		public ActionResult Index()
-        {
-			
+        {	
 			@ViewBag.tno = TempData["tno"];
 			@ViewBag.tname = TempData["name"];
+			string tname = TempData["name"].ToString();
+			int i = 0;
+			GradeDBContext grade = new GradeDBContext();
+			SelectCourseDBContext selectCname = new SelectCourseDBContext();
+			List<SelectCourse> cname = selectCname.SelectCourses.Where(u => u.TNAME == tname).ToList();
+			foreach (var u in cname)
+			{
+				Session[i.ToString()] = u.CNAME;
+				i++;
+			}
 			
             return View();
         }
@@ -34,7 +43,6 @@ namespace StudentRegistrationSystem.Controllers
 				i++;
 			}
 			@ViewBag.count = i;
-
 			return View();
 		}
 		public ActionResult QueryTable(string tname)
@@ -251,27 +259,39 @@ namespace StudentRegistrationSystem.Controllers
 			}
 			return View(resultGrade);
 		}
-		public string UpdateGrade(List<Grade> model)
+		public string UpdateGrade(List<InsertStusentGrade> models)
 		{
 			//不知道怎么将json传递过来，先放着吧，不干了，等以后再弄到再搞，现在宣布此项目暂时停住
 			Grade grade = null;
 			GradeDBContext gradeDbContext = new GradeDBContext();
+			SelectCourseDBContext course = new SelectCourseDBContext();
+			SelectCourse select = new SelectCourse();
 			string result = null;
-			foreach (var n in model)
+			if (models != null)
 			{
-				var newGrade = gradeDbContext.Grades.Where(u => u.SNO == n.SNO && u.CNO == n.CNO && u.SEMESTER == "15-16春").FirstOrDefault();
-				if (newGrade == null)
-				{//插入
-					grade = new Grade() { SNO = n.SNO, CNO = n.CNO, GRADE = n.GRADE, SEMESTER = "15-16春" };
-					gradeDbContext.Grades.Add(grade);
-					gradeDbContext.SaveChanges();
-				}
-				else
-				{//更新
-					newGrade.GRADE = n.GRADE;
-					gradeDbContext.SaveChanges();
+				foreach (var n in models)
+				{
+					var cNo = course.SelectCourses.SingleOrDefault(u => u.CNAME == n.CNAME).CNO;
+					string CNO = cNo.ToString();
+					var newGrade = gradeDbContext.Grades.Where(u => u.SNO == n.SNO && u.CNO == CNO && u.SEMESTER == "15-16春").FirstOrDefault();
+					if (newGrade == null)
+					{//插入
+						grade = new Grade() { SNO = n.SNO, CNO = CNO, GRADE = n.GRADE, SEMESTER = "15-16春" };
+						gradeDbContext.Grades.Add(grade);
+						gradeDbContext.SaveChanges();
+					}
+					else
+					{//更新
+						newGrade.GRADE = n.GRADE;
+						gradeDbContext.SaveChanges();
+					}
 				}
 			}
+			else
+			{
+				result = "返回值为空";
+			}
+
 			result = "成功";
 			return result;
 		}

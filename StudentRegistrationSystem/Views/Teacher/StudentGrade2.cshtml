@@ -26,12 +26,12 @@
                 <td id="studentgradeid">@u.SNO</td>
                 <td id="studentgradename">@u.SNAME</td>
                 <td id="gradeofstudent">
-                    <input type="text" name="name" style="width:130px;height:26px;padding:0;margin:0;" class="form-control" value="@u.GRADE" />
+                    <input type="text" id="student-input-grade" name="student-input-grade" style="width:130px;height:26px;padding:0;margin:0;" class="form-control" value="@u.GRADE" />
                 </td>
                 <td>@k</td>
-                <td id="studentgradeid"></td>
-                <td id="studentgradename"></td>
-                <td id="gradeofstudent"></td>
+                <td></td>
+                <td></td>
+                <td></td>
             </tr>
         }
         for (int j = i + 1; j < 21; j++)
@@ -40,13 +40,15 @@
             <tr>
                 <td>@j</td>
                 <td></td>
-                <td id="studentgradename"></td>
-                <td id="gradeofstudent"></td>
+                <td></td>
+                <td></td>
                 <td>@k</td>
-                <td id="studentgradeid"></td>
-                <td id="studentgradename"></td>
-                <td id="gradeofstudent"></td>
+                <td></td>
+                <td></td>
+                <td></td>
             </tr>
         }
     }
 </table>
+<button id="savegrade" class="btn btn-default" style="background: #337ab7;color:white;font-weight:bolder;">提交</button>
+<button class="getValue" style="display:none">@Session["1"]</button>

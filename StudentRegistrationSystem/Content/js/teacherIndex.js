@@ -53,25 +53,32 @@
         });
         $("#savegrade").css({ "display": "block" });
     });
-    $("#savegrade").click(function () {
-        var models = [ ];
+
+    $("#grade-studentclass").on("click", "#savegrade", this, function (event) {
+        var models = [];
+        var sno = null;
+        var sname = null;
+        var grade = null;
+        var cname = null;
+        var cname = $("#grade-studentclass .getValue").text().trim();
         $.each($("#grade-studentclass table tr"), function (i, item) {
-            var sno = $(item).find($("[name=studentgradeid]")).text();
-            var sname = $(item).find($("[name=studentgradename]")).text();
-            var grade = $(item).find($("[name=student-input-grade]")).val();
-            models.push({ SNO: sno, SNAME: sname, GRADE: grade });
+            sno = $(item).find("#studentgradeid").text().trim();
+            sname = $(item).find("#studentgradename").text().trim();
+            grade = $(item).find("#student-input-grade").val();
+            //cname = $(item).find("#grade-studentclass #getValue").text().trim();
+            if (0 <= parseInt(grade) && 100 >= parseInt(grade)) {
+                models.push({ SNO: sno, SNAME: sname, GRADE: grade, CNAME: cname });
+            } else if (parseInt(grade) > 100 || parseInt(grade) < 0) {
+                alert("分数存在错误，请重新输入!");
+            }
         });
-        debugger;
         $.ajax({
             url: "/Teacher/UpdateGrade",
-            data: { "list": models },
-            type: "get",
+            data: JSON.stringify(models),
+            type: "POST",
             contentType: "application/json,charset=utf-8",
-            success:function(result){
+            success: function (result) {
                 alert(result);
-            },
-            error: function (result) {
-                alert("出错啦!");
             }
         });
     });
